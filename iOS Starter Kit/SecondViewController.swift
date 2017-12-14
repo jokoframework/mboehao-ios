@@ -11,4 +11,7 @@ import Alamofire
 
 class SecondViewController: UIViewController {
    
+    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        
+    }
 }

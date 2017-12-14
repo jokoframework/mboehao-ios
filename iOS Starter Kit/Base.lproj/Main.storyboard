@@ -73,8 +73,12 @@
                         <viewLayoutGuide key="safeArea" id="b5I-oz-y2O"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZJC-Z6-j7a">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="0SX-Jj-Wvn"/>
-                        <barButtonItem key="rightBarButtonItem" title="Log out" id="OhG-tq-kOp"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" style="done" id="n7V-3B-vaB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Log out" id="OhG-tq-kOp">
+                            <connections>
+                                <action selector="logOutPressed:" destination="Y36-bV-KPh" id="ddb-Mb-5pV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAP-y9-3NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,5 +106,6 @@
     </scenes>
     <resources>
         <image name="LogoSodep" width="248" height="187"/>
+        <image name="menu" width="22" height="22"/>
     </resources>
 </document>

@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         if isConnectedToInternet() {
             performSegue(withIdentifier: "goToSecondView", sender: self)
         } else {
-            let alert = UIAlertController(title: "Ups", message: "No hay conexión a Internet", preferredStyle: .alert)
+            let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
                 NSLog("The \"OK\" alert occured.")
             }))
