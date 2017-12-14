@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		53E7A6B48DB42CAE5E822101 /* Pods_iOS_Starter_Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F65E878DFFBCBC08E8E9EF /* Pods_iOS_Starter_Kit.framework */; };
+		59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */; };
 		59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC6D871FE14ED800513896 /* AppDelegate.swift */; };
 		59DC6D8A1FE14ED800513896 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC6D891FE14ED800513896 /* ViewController.swift */; };
 		59DC6D8D1FE14ED800513896 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8B1FE14ED800513896 /* Main.storyboard */; };
 		59DC6D8F1FE14ED800513896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8E1FE14ED800513896 /* Assets.xcassets */; };
 		59DC6D921FE14ED800513896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */; };
-		59DC6D9A1FE1660F00513896 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC6D991FE1660F00513896 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E9849FD97E24C8ECFE712D4 /* Pods-iOS Starter Kit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Starter Kit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit.release.xcconfig"; sourceTree = "<group>"; };
 		21FF819F353DA69D2B953A9E /* Pods-iOS Starter Kit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Starter Kit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit.debug.xcconfig"; sourceTree = "<group>"; };
+		59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		59DC6D841FE14ED800513896 /* iOS Starter Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Starter Kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DC6D871FE14ED800513896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59DC6D891FE14ED800513896 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		59DC6D8E1FE14ED800513896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59DC6D911FE14ED800513896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59DC6D931FE14ED800513896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		59DC6D991FE1660F00513896 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		66F65E878DFFBCBC08E8E9EF /* Pods_iOS_Starter_Kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Starter_Kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,7 +74,7 @@
 			children = (
 				59DC6D871FE14ED800513896 /* AppDelegate.swift */,
 				59DC6D891FE14ED800513896 /* ViewController.swift */,
-				59DC6D991FE1660F00513896 /* SecondViewController.swift */,
+				59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */,
 				59DC6D8B1FE14ED800513896 /* Main.storyboard */,
 				59DC6D8E1FE14ED800513896 /* Assets.xcassets */,
 				59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */,
@@ -220,7 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59DC6D9A1FE1660F00513896 /* SecondViewController.swift in Sources */,
+				59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */,
 				59DC6D8A1FE14ED800513896 /* ViewController.swift in Sources */,
 				59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */,
 			);
