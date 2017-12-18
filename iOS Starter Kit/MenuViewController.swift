@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  MenuViewController.swift
 //  iOS Starter Kit
 //
 //  Created by nessvaldez on 12/14/17.
@@ -8,17 +8,12 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        
-        view.addGestureRecognizer(edgePan)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,12 +21,7 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized {
-            performSegue(withIdentifier: "sideMenuSegue", sender: self)
-        }
-    }
-    
+
     /*
     // MARK: - Navigation
 
