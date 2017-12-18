@@ -6,6 +6,11 @@
 build/
 DerivedData/
 
+##Xcode
+*.xcworkspace
+!default.xcworkspace
+profile
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
