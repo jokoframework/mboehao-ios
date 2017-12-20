@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
     @IBAction func logInBtnPressed(_ sender: UIButton) {
         if isConnectedToInternet() {
-            performSegue(withIdentifier: "goToSecondView", sender: self)
+            performSegue(withIdentifier: "goToSecondController", sender: self)
         } else {
             let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
