@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53E7A6B48DB42CAE5E822101 /* Pods_iOS_Starter_Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F65E878DFFBCBC08E8E9EF /* Pods_iOS_Starter_Kit.framework */; };
+		591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 591907A41FED31D7005F7667 /* GoogleService-Info.plist */; };
 		597785081FE8013600B00920 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597785071FE8013600B00920 /* SWRevealViewController.m */; };
 		59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */; };
 		59BC21521FE2C0E20056FF69 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC21511FE2C0E20056FF69 /* MenuViewController.swift */; };
@@ -21,6 +22,8 @@
 /* Begin PBXFileReference section */
 		1E9849FD97E24C8ECFE712D4 /* Pods-iOS Starter Kit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Starter Kit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit.release.xcconfig"; sourceTree = "<group>"; };
 		21FF819F353DA69D2B953A9E /* Pods-iOS Starter Kit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Starter Kit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit.debug.xcconfig"; sourceTree = "<group>"; };
+		591907A41FED31D7005F7667 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Starter Kit.entitlements"; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
 		597785061FE8013600B00920 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		597785071FE8013600B00920 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -97,12 +100,14 @@
 		59DC6D861FE14ED800513896 /* iOS Starter Kit */ = {
 			isa = PBXGroup;
 			children = (
+				591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */,
 				59DC6D871FE14ED800513896 /* AppDelegate.swift */,
 				59DC6D891FE14ED800513896 /* ViewController.swift */,
 				59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */,
 				59DC6D8B1FE14ED800513896 /* Main.storyboard */,
 				59DC6D8E1FE14ED800513896 /* Assets.xcassets */,
 				59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */,
+				591907A41FED31D7005F7667 /* GoogleService-Info.plist */,
 				59DC6D931FE14ED800513896 /* Info.plist */,
 				59BC21511FE2C0E20056FF69 /* MenuViewController.swift */,
 			);
@@ -154,6 +159,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -183,6 +193,7 @@
 				59DC6D921FE14ED800513896 /* LaunchScreen.storyboard in Resources */,
 				59DC6D8F1FE14ED800513896 /* Assets.xcassets in Resources */,
 				59DC6D8D1FE14ED800513896 /* Main.storyboard in Resources */,
+				591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,12 +241,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -392,11 +407,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "iOS Starter Kit/iOS Starter Kit.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PD57CQ6SSE;
+				DEVELOPMENT_TEAM = HX4WNU4G8S;
 				INFOPLIST_FILE = "iOS Starter Kit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nvaldez.Sodep.iOS-Starter-Kit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sodep.ios-starter-kit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS Starter Kit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -411,11 +428,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "iOS Starter Kit/iOS Starter Kit.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PD57CQ6SSE;
+				DEVELOPMENT_TEAM = HX4WNU4G8S;
 				INFOPLIST_FILE = "iOS Starter Kit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nvaldez.Sodep.iOS-Starter-Kit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sodep.ios-starter-kit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOS Starter Kit-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

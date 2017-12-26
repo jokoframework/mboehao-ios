@@ -7,6 +7,7 @@ target 'iOS Starter Kit' do
 
   # Pods for iOS Starter Kit
 pod 'Alamofire'
-pod 'SideMenu'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 
 end
