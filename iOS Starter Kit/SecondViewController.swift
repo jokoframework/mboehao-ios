@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SecondViewController: UIViewController {
 
@@ -16,22 +17,13 @@ class SecondViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        
-//        openSideMenu.target = self.revealViewController()
-//        openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
-//
         if self.revealViewController() != nil {
             self.openSideMenu.target = self.revealViewController()
             self.openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.revealViewController().rearViewRevealWidth = 200
         }
-        
-        
-//        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-//        edgePan.edges = .left
-//
-//        view.addGestureRecognizer(edgePan)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,12 +31,30 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-//        if recognizer.state == .recognized {
-//            performSegue(withIdentifier: "sideMenuSegue", sender: self)
-//        }
-//    }
+    @IBAction func notifyPressed(_ sender: UIButton) {
+        timedNotification(inSeconds: 3) { (success) in
+            if success {
+                print("Success")
+            }
+        }
+    }
     
+    func timedNotification(inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+        let content = UNMutableNotificationContent()
+        content.title = "Local Push Notification"
+        content.subtitle = "Test"
+        content.body = "Test of local push notification"
+        
+        let request = UNNotificationRequest(identifier: "customNotification", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

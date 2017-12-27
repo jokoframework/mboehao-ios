@@ -107,7 +107,25 @@
                     <view key="view" contentMode="scaleToFill" id="uxo-fs-ei2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2n-vc-Dy2">
+                                <rect key="frame" x="107" y="147" width="161" height="56"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="UOb-ji-fWh"/>
+                                </constraints>
+                                <state key="normal" title="Notify"/>
+                                <connections>
+                                    <action selector="notifyPressed:" destination="PUP-6X-MPV" eventType="touchUpInside" id="NLR-BM-kw7"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.6199126854" green="0.70379809559999995" blue="0.86819948189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DEh-MB-fy4" firstAttribute="trailing" secondItem="F2n-vc-Dy2" secondAttribute="trailing" constant="107" id="4gM-0x-5hb"/>
+                            <constraint firstItem="F2n-vc-Dy2" firstAttribute="leading" secondItem="DEh-MB-fy4" secondAttribute="leading" constant="107" id="62X-LE-sZP"/>
+                            <constraint firstItem="F2n-vc-Dy2" firstAttribute="top" secondItem="DEh-MB-fy4" secondAttribute="top" constant="83" id="Z8V-hQ-v59"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DEh-MB-fy4"/>
                     </view>
                     <navigationItem key="navigationItem" id="DRH-mj-Crl">
@@ -119,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="El5-mR-1PB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2999" y="-374"/>
+            <point key="canvasLocation" x="2997.5999999999999" y="-374.66266866566718"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ugU-yM-nsw">

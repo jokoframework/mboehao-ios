@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if error != nil {
                 print("Error en el proceso de autorización")
@@ -72,4 +73,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
     }
     
 }
+
+//Para mostrar las notificaciones si la app está abierta.
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
+}
+
+
+
+
+
+
 
