@@ -9,5 +9,7 @@ target 'iOS Starter Kit' do
 pod 'Alamofire'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
+pod 'Firebase/Auth'
+pod 'SVProgressHUD'
 
 end

@@ -26,7 +26,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M64-0X-nbS">
                                         <rect key="frame" x="28" y="8" width="220" height="30"/>
@@ -69,6 +69,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="CNj-j1-P0I"/>
                     <connections>
+                        <outlet property="emailTextField" destination="M64-0X-nbS" id="dkq-rK-ZRL"/>
+                        <outlet property="passwordTextField" destination="gz6-cu-psp" id="SRQ-EB-eN6"/>
                         <segue destination="Y36-bV-KPh" kind="show" identifier="goToSecondController" id="cJC-1L-CiX"/>
                     </connections>
                 </viewController>
@@ -130,12 +132,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="DRH-mj-Crl">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="aUD-X0-clM"/>
+                        <barButtonItem key="rightBarButtonItem" title="Log out" id="yTz-Mi-nWp">
+                            <connections>
+                                <action selector="logOutButtonPressed:" destination="PUP-6X-MPV" id="Tsi-PX-AQH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="openSideMenu" destination="aUD-X0-clM" id="eHT-jD-KN2"/>
+                        <segue destination="sd5-mx-a3l" kind="unwind" identifier="unwindToRootVC" unwindAction="unwindToRootViewControllerWithSegue:" id="7PX-UK-LAj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="El5-mR-1PB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sd5-mx-a3l" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2997.5999999999999" y="-374.66266866566718"/>
         </scene>

@@ -104,12 +104,12 @@
 				59DC6D871FE14ED800513896 /* AppDelegate.swift */,
 				59DC6D891FE14ED800513896 /* ViewController.swift */,
 				59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */,
+				59BC21511FE2C0E20056FF69 /* MenuViewController.swift */,
 				59DC6D8B1FE14ED800513896 /* Main.storyboard */,
 				59DC6D8E1FE14ED800513896 /* Assets.xcassets */,
 				59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */,
 				591907A41FED31D7005F7667 /* GoogleService-Info.plist */,
 				59DC6D931FE14ED800513896 /* Info.plist */,
-				59BC21511FE2C0E20056FF69 /* MenuViewController.swift */,
 			);
 			path = "iOS Starter Kit";
 			sourceTree = "<group>";
@@ -241,15 +241,19 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

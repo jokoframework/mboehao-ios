@@ -8,6 +8,8 @@
 
 import UIKit
 import UserNotifications
+import Firebase
+import SVProgressHUD
 
 class SecondViewController: UIViewController {
 
@@ -55,6 +57,17 @@ class SecondViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
+        do{
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: "unwindToRootVC", sender: self)
+        } catch{
+            print("Error signing out")
+        }
+
+    }
+    
     /*
     // MARK: - Navigation
 
