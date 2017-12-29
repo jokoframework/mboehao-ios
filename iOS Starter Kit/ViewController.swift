@@ -16,14 +16,39 @@ class ViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBOutlet var loginBoxConstraint: NSLayoutConstraint!
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.userInfo != nil {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                loginBoxConstraint.constant = keyboardSize.height
+                view.setNeedsLayout()
+            }
+        }
+        
+        
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        loginBoxConstraint.constant = 145.5
+        view.setNeedsLayout()
     }
     
     func isConnectedToInternet() -> Bool {
