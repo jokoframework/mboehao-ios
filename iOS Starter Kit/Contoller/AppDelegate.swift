@@ -72,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
 }
 
 //Para mostrar las notificaciones si la app está abierta.

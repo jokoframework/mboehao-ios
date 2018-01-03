@@ -15,7 +15,8 @@ class ViewController: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    
+    @IBOutlet var loginBoxConstraint: NSLayoutConstraint!
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -23,17 +24,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        let alarm = AlarmController()
+        alarm.checkInternetConnectivity(controller: self)
+        createKeyboardObservers()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet var loginBoxConstraint: NSLayoutConstraint!
+    func createKeyboardObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if notification.userInfo != nil {
@@ -42,8 +46,6 @@ class ViewController: UIViewController {
                 view.setNeedsLayout()
             }
         }
-        
-        
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -54,6 +56,23 @@ class ViewController: UIViewController {
     func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()!.isReachable
     }
+    
+//    func chechInternetConnectivity() {
+//        let reachabilityManager = NetworkReachabilityManager()
+//
+//        reachabilityManager?.startListening()
+//        reachabilityManager?.listener = { _ in
+//            if let isNetworkReachable = reachabilityManager?.isReachable, !isNetworkReachable {
+//                let alert = UIAlertController(title: "Sin conexión a Internet", message: "Asegurese que su dispositivo esté conectado a Internet", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
+//                    NSLog("The \"OK\" alert occured.")
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
+//    }
+    
+    
     @IBAction func logInBtnPressed(_ sender: UIButton) {
         if isConnectedToInternet() {
             SVProgressHUD.show()
