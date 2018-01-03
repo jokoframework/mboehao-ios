@@ -11,7 +11,7 @@ import Alamofire
 import Firebase
 import SVProgressHUD
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
