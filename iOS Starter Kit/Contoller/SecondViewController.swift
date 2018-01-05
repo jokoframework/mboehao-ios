@@ -30,12 +30,18 @@ class SecondViewController: UIViewController, WKUIDelegate {
         let request = URLRequest(url: url!)
         webView.load(request)
         
-        if self.revealViewController() != nil {
-            self.openSideMenu.target = self.revealViewController()
-            self.openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.revealViewController().rearViewRevealWidth = 300
-        }
+//        if self.revealViewController() != nil {
+//            self.openSideMenu.target = self.revealViewController()
+//            self.openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
+//            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//            self.revealViewController().rearViewRevealWidth = 300
+//        }
+        
+        openSideMenu.target = self.revealViewController()
+        openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
+        view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        revealViewController().rearViewRevealWidth = 300
+        
     }
     
     override func loadView() {
@@ -60,7 +66,7 @@ class SecondViewController: UIViewController, WKUIDelegate {
 //    }
     
     func timedNotification(inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: true)
         let content = UNMutableNotificationContent()
         content.title = "Local Push Notification"
         content.subtitle = "Test"
@@ -74,26 +80,9 @@ class SecondViewController: UIViewController, WKUIDelegate {
                 completion(true)
             }
         }
+        
     }
     
-    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
-        do{
-            try Auth.auth().signOut()
-            performSegue(withIdentifier: "unwindToRootVC", sender: self)
-        } catch{
-            print("Error signing out")
-        }
-
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    @IBAction func unwindToMainViewController(segue: UIStoryboardSegue){}
 
 }
