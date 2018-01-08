@@ -198,7 +198,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ClW-sw-emQ" kind="presentation" id="62b-qI-CcO"/>
+                                            <segue destination="ClW-sw-emQ" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="62b-qI-CcO"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

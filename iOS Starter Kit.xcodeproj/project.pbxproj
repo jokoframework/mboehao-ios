@@ -121,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */,
-				59E81A961FF6813F003CCA63 /* Model */,
 				59E81A931FF68024003CCA63 /* Contoller */,
 				59E81A941FF6803C003CCA63 /* View */,
 				59E81A951FF68065003CCA63 /* Supporting Files */,
@@ -160,13 +159,6 @@
 				59DC6D931FE14ED800513896 /* Info.plist */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		59E81A961FF6813F003CCA63 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		B4D6B93594B8ACB80236B4C1 /* Frameworks */ = {

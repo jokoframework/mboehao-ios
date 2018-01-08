@@ -75,13 +75,16 @@ class LoginViewController: UIViewController {
     
     @IBAction func logInBtnPressed(_ sender: UIButton) {
         if isConnectedToInternet() {
+            let alert = AlarmController()
             SVProgressHUD.show()
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                 if error == nil {
                     SVProgressHUD.dismiss()
                     self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                } else {
+                    SVProgressHUD.dismiss()
+                    alert.genericAlert(controller: self, message: "Usuario o contraseña incorrecta")
                 }
-                SVProgressHUD.dismiss()
             })
         } else {
             let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
