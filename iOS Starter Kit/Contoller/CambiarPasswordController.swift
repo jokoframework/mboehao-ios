@@ -31,15 +31,13 @@ class CambiarPasswordController: UITableViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        let alert = AlarmController()
-        
         
         if (currentPasswordText.text?.isEmpty)! {
-            alert.genericAlert(controller: self, message: "Debe ingresar su contraseña actual")
+            WPSAlertController.presentOkayAlert(withTitle: "Atención", message: "Debe ingresar su contraseña actual")
         }else if(newPasswordText.text?.isEmpty)!{
-            alert.genericAlert(controller: self, message: "Debe ingresar una nueva contraseña")
+            WPSAlertController.presentOkayAlert(withTitle: "Atención", message: "Debe ingresar una nueva contraseña")
         }else if(newPasswordRepeatText.text?.isEmpty)!{
-            alert.genericAlert(controller: self, message: "Debe confirmar la nueva contraseña")
+            WPSAlertController.presentOkayAlert(withTitle: "Atención", message: "Debe repetir la nueva contraseña")
         }else {
             let user = Auth.auth().currentUser
             let credential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: currentPasswordText.text!)
@@ -49,20 +47,18 @@ class CambiarPasswordController: UITableViewController {
                     if self.newPasswordText.text! == self.newPasswordRepeatText.text! {
                         user?.updatePassword(to: self.newPasswordText.text!, completion: { (error) in
                             if error == nil {
-                                let alert = UIAlertController(title: "Atención", message: "Contraseña guardada con éxito", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default, handler: { _ in
+                                self.presentAlertWithTitle(title: "Éxito!", message: "La nueva contraseña se guardó de forma exitosa",withOptions: true, options: "Ok", completion: { (_) in
                                     self.dismiss(animated: true, completion: nil)
-                                }))
-                                self.present(alert, animated: true, completion: nil)
+                                })
                             } else {
-                                alert.genericAlert(controller: self, message: "Error al intentar cambiar la contraseña")
+                                WPSAlertController.presentOkayAlert(withTitle: "Error", message: "Error al intentar cambiar la contraseña")
                             }
                         })
                     }else {
-                        alert.genericAlert(controller: self, message: "Las contraseñas no coinciden")
+                        WPSAlertController.presentOkayAlert(withTitle: "Atención", message: "Las contraseñas no coinciden")
                     }
                 }else {
-                    alert.genericAlert(controller: self, message: "Contraseña actual incorrecta")
+                    WPSAlertController.presentOkayAlert(withTitle: "Atención", message: "Contraseña actual incorrecta")
                 }
             })
         }

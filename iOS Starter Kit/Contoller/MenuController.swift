@@ -19,14 +19,17 @@ class MenuController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 1 {
-                let alarm = AlarmController()
-                alarm.logOutAlarm(controller: self)
-                //performSegue(withIdentifier: "goToLoginView", sender: nil)
+                presentAlertWithTitle(title: "Loging out", message: "Está seguro que desea salir?", withOptions: true, options: "Si", "No", completion: { (option) in
+                    if option == 0 {
+                        do{
+                            try Auth.auth().signOut()
+                            self.dismiss(animated: true, completion: nil)
+                        } catch{
+                            print("Error signing out")
+                        }
+                    }
+                })
             }
         }
-    }
-    
-    func performLogOut(){
-        
     }
 }

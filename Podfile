@@ -11,5 +11,6 @@ pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'Firebase/Auth'
 pod 'SVProgressHUD'
+pod 'ActionSheetPicker-3.0'
 
 end
