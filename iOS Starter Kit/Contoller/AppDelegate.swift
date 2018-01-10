@@ -11,12 +11,12 @@ import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
 import UserNotifications
+import Alamofire
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
             }
         }
         
+        let alert = WPSAlertController.init(title: "Sin conexión a internet", message: "Asegurese que su dispositivo esté conectado a Internet", preferredStyle: .alert)
         UIApplication.shared.registerForRemoteNotifications()
+        checkInternetConnectivity(alert: alert)
         
         return true
     }
@@ -79,6 +81,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(.alert)
+    }
+}
+
+func checkInternetConnectivity(alert: WPSAlertController) {
+    let reachabilityManager = NetworkReachabilityManager()
+    reachabilityManager?.startListening()
+    reachabilityManager?.listener = { _ in
+        if let isNetworkReachable = reachabilityManager?.isReachable, !isNetworkReachable {
+            alert.show(animated: true)
+        } else {
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		53E7A6B48DB42CAE5E822101 /* Pods_iOS_Starter_Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F65E878DFFBCBC08E8E9EF /* Pods_iOS_Starter_Kit.framework */; };
 		591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 591907A41FED31D7005F7667 /* GoogleService-Info.plist */; };
+		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
+		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
 		597785081FE8013600B00920 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597785071FE8013600B00920 /* SWRevealViewController.m */; };
 		59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */; };
 		59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C541581FFFA8F100650242 /* CambiarPassword.storyboard */; };
@@ -18,7 +20,6 @@
 		59DC6D8D1FE14ED800513896 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8B1FE14ED800513896 /* Main.storyboard */; };
 		59DC6D8F1FE14ED800513896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8E1FE14ED800513896 /* Assets.xcassets */; };
 		59DC6D921FE14ED800513896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */; };
-		59E81A981FF6815B003CCA63 /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E81A971FF6815B003CCA63 /* AlarmController.swift */; };
 		59E994691FFD1FED0055A90F /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E994681FFD1FED0055A90F /* MenuController.swift */; };
 		59E99CE51FFE4E9300D10676 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E99CE41FFE4E9300D10676 /* Preferences.storyboard */; };
 		59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */; };
@@ -29,6 +30,9 @@
 		21FF819F353DA69D2B953A9E /* Pods-iOS Starter Kit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Starter Kit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit.debug.xcconfig"; sourceTree = "<group>"; };
 		591907A41FED31D7005F7667 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Starter Kit.entitlements"; sourceTree = "<group>"; };
+		592185E320050A6E00FE601F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		5923D26D20063A2C005BD5BB /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
+		5923D26E20063A2D005BD5BB /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
 		597785061FE8013600B00920 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		597785071FE8013600B00920 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -42,7 +46,6 @@
 		59DC6D8E1FE14ED800513896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59DC6D911FE14ED800513896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59DC6D931FE14ED800513896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		59E81A971FF6815B003CCA63 /* AlarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
 		59E994681FFD1FED0055A90F /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		59E99CE41FFE4E9300D10676 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
@@ -70,9 +73,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5923D27020063A34005BD5BB /* WPSAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				5923D26E20063A2D005BD5BB /* WPSAlertController.h */,
+				5923D26D20063A2C005BD5BB /* WPSAlertController.m */,
+			);
+			name = WPSAlertController;
+			sourceTree = "<group>";
+		};
 		597784FF1FE7FFAA00B00920 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */,
+				5923D27020063A34005BD5BB /* WPSAlertController */,
 				5977850A1FE8015A00B00920 /* SWRevealViewCotroller */,
 			);
 			name = Libs;
@@ -83,7 +97,6 @@
 			children = (
 				597785061FE8013600B00920 /* SWRevealViewController.h */,
 				597785071FE8013600B00920 /* SWRevealViewController.m */,
-				597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */,
 			);
 			name = SWRevealViewCotroller;
 			sourceTree = "<group>";
@@ -134,10 +147,10 @@
 				59DC6D871FE14ED800513896 /* AppDelegate.swift */,
 				59DC6D891FE14ED800513896 /* LoginViewController.swift */,
 				59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */,
-				59E81A971FF6815B003CCA63 /* AlarmController.swift */,
 				59E994681FFD1FED0055A90F /* MenuController.swift */,
 				59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */,
 				59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */,
+				592185E320050A6E00FE601F /* AlertManager.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -289,6 +302,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -298,6 +312,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -318,13 +333,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				59C5415C1FFFAC6000650242 /* CambiarPasswordController.swift in Sources */,
-				59E81A981FF6815B003CCA63 /* AlarmController.swift in Sources */,
 				59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */,
 				59DC6D8A1FE14ED800513896 /* LoginViewController.swift in Sources */,
 				597785081FE8013600B00920 /* SWRevealViewController.m in Sources */,
 				59E994691FFD1FED0055A90F /* MenuController.swift in Sources */,
 				59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */,
 				59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */,
+				592185E420050A6E00FE601F /* AlertManager.swift in Sources */,
+				5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,12 +23,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let alarm = AlarmController()
-        alarm.checkInternetConnectivity(controller: self)
         createKeyboardObservers()
+        
+        //Background task mientras la aplicacion se encuentre activa.
+
     }
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,42 +57,18 @@ class LoginViewController: UIViewController {
         return NetworkReachabilityManager()!.isReachable
     }
     
-//    func chechInternetConnectivity() {
-//        let reachabilityManager = NetworkReachabilityManager()
-//
-//        reachabilityManager?.startListening()
-//        reachabilityManager?.listener = { _ in
-//            if let isNetworkReachable = reachabilityManager?.isReachable, !isNetworkReachable {
-//                let alert = UIAlertController(title: "Sin conexión a Internet", message: "Asegurese que su dispositivo esté conectado a Internet", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-//                    NSLog("The \"OK\" alert occured.")
-//                }))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//        }
-//    }
-    
-    
     @IBAction func logInBtnPressed(_ sender: UIButton) {
-        if isConnectedToInternet() {
-            let alert = AlarmController()
-            SVProgressHUD.show()
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
-                if error == nil {
-                    SVProgressHUD.dismiss()
-                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
-                } else {
-                    SVProgressHUD.dismiss()
-                    alert.genericAlert(controller: self, message: "Usuario o contraseña incorrecta")
-                }
-            })
-        } else {
-            let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-                NSLog("The \"OK\" alert occured.")
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
+        SVProgressHUD.show()
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+            if error == nil {
+                SVProgressHUD.dismiss()
+                self.performSegue(withIdentifier: "goToSecondController", sender: self)
+            } else {
+                SVProgressHUD.dismiss()
+                self.presentAlertWithTitle(title: "Atención", message: "Usuario o contraseña incorrecta", withOptions: true, options: "Ok", completion: { (_) in
+                })
+            }
+        })
     }
     
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue){}
