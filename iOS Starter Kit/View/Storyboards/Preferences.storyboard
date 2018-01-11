@@ -103,7 +103,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="HN5-ha-b3s">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow_left" id="KB4-q3-Foy">
+                        <barButtonItem key="leftBarButtonItem" image="arrow_left" id="KB4-q3-Foy">
                             <connections>
                                 <action selector="unwindToMVC:" destination="pMS-TH-oWp" id="0eU-Jo-UaF"/>
                             </connections>
