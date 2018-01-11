@@ -30,6 +30,10 @@ class CambiarPasswordController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
         if (currentPasswordText.text?.isEmpty)! {

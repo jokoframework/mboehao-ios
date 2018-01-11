@@ -12,7 +12,7 @@
 		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
 		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
 		597785081FE8013600B00920 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597785071FE8013600B00920 /* SWRevealViewController.m */; };
-		59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */; };
+		59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */; };
 		59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C541581FFFA8F100650242 /* CambiarPassword.storyboard */; };
 		59C5415C1FFFAC6000650242 /* CambiarPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */; };
 		59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC6D871FE14ED800513896 /* AppDelegate.swift */; };
@@ -20,6 +20,8 @@
 		59DC6D8D1FE14ED800513896 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8B1FE14ED800513896 /* Main.storyboard */; };
 		59DC6D8F1FE14ED800513896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8E1FE14ED800513896 /* Assets.xcassets */; };
 		59DC6D921FE14ED800513896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */; };
+		59E2C63020078730007C6319 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2C62F20078730007C6319 /* Item.swift */; };
+		59E2C6322007AF04007C6319 /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E2C6312007AF04007C6319 /* BodyViewController.swift */; };
 		59E994691FFD1FED0055A90F /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E994681FFD1FED0055A90F /* MenuController.swift */; };
 		59E99CE51FFE4E9300D10676 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E99CE41FFE4E9300D10676 /* Preferences.storyboard */; };
 		59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */; };
@@ -36,7 +38,7 @@
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
 		597785061FE8013600B00920 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		597785071FE8013600B00920 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		59C541581FFFA8F100650242 /* CambiarPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CambiarPassword.storyboard; sourceTree = "<group>"; };
 		59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CambiarPasswordController.swift; sourceTree = "<group>"; };
 		59DC6D841FE14ED800513896 /* iOS Starter Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Starter Kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +48,8 @@
 		59DC6D8E1FE14ED800513896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59DC6D911FE14ED800513896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59DC6D931FE14ED800513896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59E2C62F20078730007C6319 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		59E2C6312007AF04007C6319 /* BodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		59E994681FFD1FED0055A90F /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		59E99CE41FFE4E9300D10676 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */,
+				59E2C62E200786E6007C6319 /* Model */,
 				59E81A931FF68024003CCA63 /* Contoller */,
 				59E81A941FF6803C003CCA63 /* View */,
 				59E81A951FF68065003CCA63 /* Supporting Files */,
@@ -141,16 +146,25 @@
 			path = "iOS Starter Kit";
 			sourceTree = "<group>";
 		};
+		59E2C62E200786E6007C6319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59E2C62F20078730007C6319 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		59E81A931FF68024003CCA63 /* Contoller */ = {
 			isa = PBXGroup;
 			children = (
 				59DC6D871FE14ED800513896 /* AppDelegate.swift */,
 				59DC6D891FE14ED800513896 /* LoginViewController.swift */,
-				59BC214F1FE2BCDA0056FF69 /* SecondViewController.swift */,
+				59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */,
 				59E994681FFD1FED0055A90F /* MenuController.swift */,
 				59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */,
 				59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */,
 				592185E320050A6E00FE601F /* AlertManager.swift */,
+				59E2C6312007AF04007C6319 /* BodyViewController.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -308,6 +322,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -318,6 +333,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +348,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E2C63020078730007C6319 /* Item.swift in Sources */,
 				59C5415C1FFFAC6000650242 /* CambiarPasswordController.swift in Sources */,
-				59BC21501FE2BCDA0056FF69 /* SecondViewController.swift in Sources */,
+				59E2C6322007AF04007C6319 /* BodyViewController.swift in Sources */,
+				59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */,
 				59DC6D8A1FE14ED800513896 /* LoginViewController.swift in Sources */,
 				597785081FE8013600B00920 /* SWRevealViewController.m in Sources */,
 				59E994691FFD1FED0055A90F /* MenuController.swift in Sources */,
