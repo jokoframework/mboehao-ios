@@ -10,11 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+let GITHUB_API = "https://api.github.com/repos/googlesamples/android-RuntimePermissions/issues"
+
+
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var number: UILabel!
-    
-    
 }
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -38,7 +39,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         openSideMenu.target = self.revealViewController()
         openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        revealViewController().rearViewRevealWidth = 300
+        revealViewController().rearViewRevealWidth = 250
         
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(self.getTableData), for: UIControlEvents.valueChanged)
@@ -93,14 +94,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let destination = segue.destination as? BodyViewController {
             
             let text = data[currentSelectedCell!].body == "" ? "No hay descripción para este issue" : data[currentSelectedCell!].body
+            let titleText = data[currentSelectedCell!].title == "" ? "Sin titutlo" : data[currentSelectedCell!].title
             
             destination.bodyText = text
+            destination.issueTitle = titleText
         }
     }
     
     
     @objc func getTableData() {
-        Alamofire.request("https://api.github.com/repos/jokoframework/mboehao-ios/issues").responseJSON { (response) in
+        Alamofire.request(GITHUB_API).responseJSON { (response) in
             if response.result.isSuccess {
                 let githubJSON : JSON = JSON(response.result.value!)
                 self.updateTableData(json: githubJSON)

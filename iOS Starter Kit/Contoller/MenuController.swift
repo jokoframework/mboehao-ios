@@ -11,8 +11,11 @@ import Firebase
 
 class MenuController: UITableViewController {
 
+    
+    @IBOutlet weak var navigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBar.title = Auth.auth().currentUser?.email
     }
     
     

@@ -10,18 +10,22 @@ import UIKit
 import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
+import Firebase
+import GoogleSignIn
 import UserNotifications
 import Alamofire
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate{
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if error != nil {
@@ -30,11 +34,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
         
         let alert = WPSAlertController.init(title: "Sin conexión a internet", message: "Asegurese que su dispositivo esté conectado a Internet", preferredStyle: .alert)
+        
         UIApplication.shared.registerForRemoteNotifications()
         checkInternetConnectivity(alert: alert)
         
         return true
     }
+    
+    
+    // MARK - Google Sign In Methods
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+    }
+    
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("El usuario se desconectó de la app")
+    }
+    
+    
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Got a token \(deviceToken)")
