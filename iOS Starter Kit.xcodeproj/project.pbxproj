@@ -11,6 +11,7 @@
 		591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 591907A41FED31D7005F7667 /* GoogleService-Info.plist */; };
 		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
 		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
+		5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972EEF9200F811800DB876C /* NotificationPreferences.swift */; };
 		597785081FE8013600B00920 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597785071FE8013600B00920 /* SWRevealViewController.m */; };
 		59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */; };
 		59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C541581FFFA8F100650242 /* CambiarPassword.storyboard */; };
@@ -35,6 +36,7 @@
 		592185E320050A6E00FE601F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5923D26D20063A2C005BD5BB /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 		5923D26E20063A2D005BD5BB /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
+		5972EEF9200F811800DB876C /* NotificationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferences.swift; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
 		597785061FE8013600B00920 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		597785071FE8013600B00920 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				59DC6D8B1FE14ED800513896 /* Main.storyboard */,
 				59E99CE41FFE4E9300D10676 /* Preferences.storyboard */,
 				59C541581FFFA8F100650242 /* CambiarPassword.storyboard */,
+				59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				59E2C62F20078730007C6319 /* Item.swift */,
+				5972EEF9200F811800DB876C /* NotificationPreferences.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,7 +185,6 @@
 		59E81A951FF68065003CCA63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */,
 				591907A41FED31D7005F7667 /* GoogleService-Info.plist */,
 				59DC6D931FE14ED800513896 /* Info.plist */,
 			);
@@ -209,6 +212,7 @@
 				59DC6D821FE14ED800513896 /* Resources */,
 				C86CDCA8488F1237DD9A7B7B /* [CP] Embed Pods Frameworks */,
 				885A1349E2072CFF6DE982AE /* [CP] Copy Pods Resources */,
+				59C9DAA5200E2DFC00ED273A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -276,6 +280,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		59C9DAA5200E2DFC00ED273A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+		};
 		885A1349E2072CFF6DE982AE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -362,6 +379,7 @@
 				59E994691FFD1FED0055A90F /* MenuController.swift in Sources */,
 				59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */,
 				59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */,
+				5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */,
 				592185E420050A6E00FE601F /* AlertManager.swift in Sources */,
 				5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */,
 			);
@@ -384,6 +402,7 @@
 				59DC6D911FE14ED800513896 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = "../../Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -11,28 +11,31 @@ import Firebase
 
 class MenuController: UITableViewController {
 
-    
     @IBOutlet weak var navigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.title = Auth.auth().currentUser?.email
     }
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 1 {
-                presentAlertWithTitle(title: "Loging out", message: "Está seguro que desea salir?", withOptions: true, options: "Si", "No", completion: { (option) in
+                presentAlertWithTitle(title: "Loging out",
+                                      message: "Está seguro que desea salir?",
+                                      withOptions: true,
+                                      options: "Si", "No",
+                                      completion: { (option) in
                     if option == 0 {
-                        do{
+                        do {
                             try Auth.auth().signOut()
                             self.dismiss(animated: true, completion: nil)
-                        } catch{
+                        } catch {
                             print("Error signing out")
                         }
                     }
                 })
             }
         }
+    }
+    func disableChangePasswordOption() {
     }
 }

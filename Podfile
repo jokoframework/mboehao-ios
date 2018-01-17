@@ -14,5 +14,6 @@ pod 'GoogleSignIn'
 pod 'SVProgressHUD'
 pod 'ActionSheetPicker-3.0'
 pod 'SwiftyJSON'
+pod 'SwiftLint'
  
 end

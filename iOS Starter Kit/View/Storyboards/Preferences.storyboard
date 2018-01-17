@@ -108,6 +108,11 @@
                                 <action selector="unwindToMVC:" destination="pMS-TH-oWp" id="0eU-Jo-UaF"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="Tt1-bH-TQi">
+                            <connections>
+                                <action selector="savedPreferences:" destination="pMS-TH-oWp" id="1cV-st-XLm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="taskSwitch" destination="mUX-ZF-6em" id="oem-UF-mth"/>
