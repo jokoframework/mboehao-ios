@@ -1,6 +1,0 @@
-framework module Pods_iOS_Starter_Kit {
-  umbrella header "Pods-iOS Starter Kit-umbrella.h"
-
-  export *
-  module * { export * }
-}
