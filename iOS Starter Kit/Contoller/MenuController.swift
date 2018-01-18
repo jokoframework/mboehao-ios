@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
+import GoogleSignIn
 
 class MenuController: UITableViewController {
 
@@ -25,8 +27,12 @@ class MenuController: UITableViewController {
                                       options: "Si", "No",
                                       completion: { (option) in
                     if option == 0 {
+
                         do {
                             try Auth.auth().signOut()
+                            let loginManager = FBSDKLoginManager()
+                            GIDSignIn.sharedInstance().signOut()
+                            loginManager.logOut()
                             self.dismiss(animated: true, completion: nil)
                         } catch {
                             print("Error signing out")
@@ -35,7 +41,5 @@ class MenuController: UITableViewController {
                 })
             }
         }
-    }
-    func disableChangePasswordOption() {
     }
 }

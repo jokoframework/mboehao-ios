@@ -15,5 +15,6 @@ pod 'SVProgressHUD'
 pod 'ActionSheetPicker-3.0'
 pod 'SwiftyJSON'
 pod 'SwiftLint'
+pod 'FBSDKLoginKit'
  
 end

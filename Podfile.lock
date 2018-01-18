@@ -1,6 +1,16 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
   - Alamofire (4.6.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.29.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.29.0):
+    - FBSDKCoreKit
   - Firebase/Auth (4.8.0):
     - Firebase/Core
     - FirebaseAuth (= 4.4.1)
@@ -66,6 +76,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
@@ -77,6 +88,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseAuth: dc0dd403beca5b2b016aac89c2d0b8dad1c81926
@@ -93,6 +107,6 @@ SPEC CHECKSUMS:
   SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: ab4929e4b2252e0bf9f6022e29fea690441f34ed
+PODFILE CHECKSUM: 4770651ef8d7863eb81e23604f05a7f6549e6dfd
 
 COCOAPODS: 1.3.1

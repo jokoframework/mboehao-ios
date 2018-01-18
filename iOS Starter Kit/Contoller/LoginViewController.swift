@@ -11,13 +11,15 @@ import Alamofire
 import Firebase
 import GoogleSignIn
 import SVProgressHUD
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginBoxConstraint: NSLayoutConstraint!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
+    @IBOutlet weak var fbButton: UIView!
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -27,20 +29,45 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         setUpGoogleButton()
+        let facebookLoginButton = FBSDKLoginButton()
+        facebookLoginButton.delegate = self
+        facebookLoginButton.frame = CGRect(x: 0, y: 0, width: 312, height: 48)
+        fbButton.addSubview(facebookLoginButton)
     }
     func setUpGoogleButton() {
         googleSignInButton.style = GIDSignInButtonStyle.wide
         googleSignInButton.colorScheme = GIDSignInButtonColorScheme.light
     }
+    // MARK: Google Sing In
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
             return
         }
-        SVProgressHUD.show()
         guard let authentication = user.authentication else {return}
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential) { (_, error) in
+        loginWithCredentials(credentials: credential)
+    }
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("Bye bye")
+    }
+    // MARK: Facebook Sing In
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Log out")
+    }
+    //swiftlint:disable:next line_length
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        } else {
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            loginWithCredentials(credentials: credential)
+        }
+    }
+    func loginWithCredentials(credentials: AuthCredential) {
+        SVProgressHUD.show()
+        Auth.auth().signIn(with: credentials) { (_, error) in
             if error == nil {
                 SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "goToSecondController", sender: nil)
@@ -53,9 +80,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 SVProgressHUD.dismiss()
             }
         }
-    }
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        print("Bye bye")
     }
     func createKeyboardObservers() {
         NotificationCenter.default.addObserver(self,

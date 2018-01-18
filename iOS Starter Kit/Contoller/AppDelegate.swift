@@ -14,6 +14,7 @@ import Firebase
 import GoogleSignIn
 import UserNotifications
 import Alamofire
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -33,18 +34,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                                             preferredStyle: .alert)
         UIApplication.shared.registerForRemoteNotifications()
         checkInternetConnectivity(alert: alert)
+        //Facebook
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     // MARK: Google Sign In Methods
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
-        // swiftlint:disable:next line_length
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        // swiftlint:disable line_length
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(app,
+                                                                                      open: url,
+                                                                                      sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                                                      annotation: [:])
+        // swiftlint:enable line_length
+        return googleDidHandle || facebookDidHandle
     }
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print("El usuario se desconectó de la app")
     }
+    // MARK: FB Sign IN
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Got a token \(deviceToken)")
         connectToFirebaseCM()
