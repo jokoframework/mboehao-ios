@@ -21,6 +21,7 @@ profile
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+iOS Starter Kit.xcodeproj/xcuserdata/
 
 ## Other
 *.moved-aside
