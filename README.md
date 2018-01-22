@@ -20,7 +20,7 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
     ```
     open iOS\ Starter\ Kit.xcworkspace/
     ```
-## Lista de funcionalidades
+## Lista de funcionalidades implementadas
 - [x] Login con Firebase
 - [x] Login con Google
 - [x] Login con Facebook
@@ -32,7 +32,6 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
 - [x] Slide Menu
 - [x] Checkear persistentemente la conexión a Internet de la app
 - [x] Agendar una notificacion local
-- [ ] Tarea Periódica
 - [x] TableView
 - [x] Acceder a elementos individuales de una TableView
 - [x] Pasar datos entre Views
@@ -44,6 +43,12 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
 - [x] Calendario
 - [x] Guardar datos del usuario en forma local
 - [x] Recuperar datos del usuario
+- [x] SwiftLint para manejo de convenciones
+
+## Lista de funcionalidades futuras
+- [ ] Tarea Periódica aunque la app no esté activa
+- [ ] Incorporar Touch-ID
+
 
 ## Otros proyectos
 Como referencia se utilizó el Proyecto Simple, que implementa varias de estas funcionalidades.
