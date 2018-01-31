@@ -9,16 +9,16 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
-let GITHUBAPI = "https://api.github.com/repos/googlesamples/android-RuntimePermissions/issues"
+import CoreData
+//URL de la API que se va a consultar.
+let GITHUBAPI = "https://api.github.com/repos/jokoframework/mboehao-ios/issues"
 
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var number: UILabel!
 }
-
+var data = [Item]()
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var data = [Item]()
     var currentSelectedCell: Int?
     var refresher: UIRefreshControl!
     @IBOutlet weak var openSideMenu: UIBarButtonItem!
@@ -32,6 +32,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         revealViewController().rearViewRevealWidth = 250
+        //Agrega gesto para actualizar el tableView haciendo un swipe down
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(self.getTableData), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresher)
@@ -39,7 +40,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         getTableData()
 
     }
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -72,11 +72,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             destination.issueTitle = titleText
         }
     }
+    //Función que hace el Get Request
     @objc func getTableData() {
         Alamofire.request(GITHUBAPI).responseJSON { (response) in
             if response.result.isSuccess {
-                let githubJSON: JSON = JSON(response.result.value!)
-                self.updateTableData(json: githubJSON)
+                //En dataJSON se almacena el JSON resultante del request
+                let dataJSON: JSON = JSON(response.result.value!)
+                self.updateTableData(json: dataJSON)
             } else {
                 print("Error \(String(describing: response.result.error))")
             }
@@ -84,7 +86,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     func updateTableData(json: JSON) {
         data.removeAll()
-
+//      Ejemplo de JSON
+//       {
+//          "data1":"some data"
+//          "data2":"some data"
+//          "data3": {
+//              "data31": "Dato que quiero extraer"
+//              "data32": "some data"
+//           }
+//        }
+// Para extrar por ejemplo el string de "data31" se hace json[2][1].stringValue,
+// donde json es donde se guardó el resutado del request
         if let numberOfElements = (json.array?.count), numberOfElements != 0 {
             for i in 0...numberOfElements - 1 {
                 let cellData = Item()

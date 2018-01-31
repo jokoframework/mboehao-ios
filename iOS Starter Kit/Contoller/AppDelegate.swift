@@ -21,21 +21,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     var window: UIWindow?
     // swiftlint:disable:next line_length
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Configurar Firebase
         FirebaseApp.configure()
+        //Configurar Google SignIn
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        //Solicitar permiso al usuario para recibir notificaciones
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (_, error) in
             if error != nil {
                 print("Error en el proceso de autorización")
             }
         }
+
+        UIApplication.shared.registerForRemoteNotifications()
+        //Configurar Facebook
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        //Alerta de falta de conexión a Internet
         let alert = WPSAlertController.init(title: "Sin conexión a internet",
                                             message: "Asegurese que su dispositivo esté conectado a Internet",
                                             preferredStyle: .alert)
-        UIApplication.shared.registerForRemoteNotifications()
         checkInternetConnectivity(alert: alert)
-        //Facebook
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     // MARK: Google Sign In Methods
@@ -80,9 +85,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler(.alert)
     }
 }
-
+//Funcion que usa Alamofire para checkear la conexión a Internet y muestra una alerta
 func checkInternetConnectivity(alert: WPSAlertController) {
     let reachabilityManager = NetworkReachabilityManager()
+    //Mirar primero si la app fue iniciada ya sin conexión a internet
+    if let firstCheck = reachabilityManager?.isReachable, !firstCheck {
+        alert.show(animated: true)
+    }
     reachabilityManager?.startListening()
     reachabilityManager?.listener = { _ in
         if let isNetworkReachable = reachabilityManager?.isReachable, !isNetworkReachable {

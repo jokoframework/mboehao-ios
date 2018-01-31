@@ -11,23 +11,25 @@ import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
 
-class MenuController: UITableViewController {
+var PREFERENCES: Int = 1
+var LOGOUT: Int = 1
 
+
+class MenuController: UITableViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.title = Auth.auth().currentUser?.email
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            if indexPath.row == 1 {
+        if indexPath.section == PREFERENCES {
+            if indexPath.row == LOGOUT {
                 presentAlertWithTitle(title: "Loging out",
                                       message: "Está seguro que desea salir?",
                                       withOptions: true,
                                       options: "Si", "No",
                                       completion: { (option) in
                     if option == 0 {
-
                         do {
                             try Auth.auth().signOut()
                             let loginManager = FBSDKLoginManager()
