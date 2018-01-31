@@ -102,19 +102,27 @@ class PreferencesController: UITableViewController {
         }
     }
     @IBAction func savedPreferences(_ sender: UIBarButtonItem) {
-        preferences.taskSwitch = taskSwitch.isOn
-        if taskSwitch.isOn {
-            self.timedNotification(time: preferences.time, completion: { (_) in
+        let actionSheet = UIAlertController(title: "Guardando..",
+                                            message: "Está seguro que desea guardar los cambios?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Si", style: .default, handler: { (_) in
+            self.preferences.taskSwitch = self.taskSwitch.isOn
+            if self.self.taskSwitch.isOn {
+                self.timedNotification(time: self.preferences.time, completion: { (_) in
+                    //swiftlint:disable:next line_length
+                    let alert = UIAlertController(title: "Éxito!", message: "La alarma fue programada con éxito para las \(self.preferences.timeLabel)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                })
+            } else {
                 //swiftlint:disable:next line_length
-                let alert = UIAlertController(title: "Éxito!", message: "La alarma fue programada con éxito para las \(self.preferences.timeLabel)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            })
-        } else {
-            print("Se borraron las alarmas")
-            //swiftlint:disable:next line_length
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["customNotification"])
-        }
-        saveData()
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["customNotification"])
+                WPSAlertController.presentOkayAlert(withTitle: "Listo",
+                                                    message: "Los cambios fueron guardados con éxito")
+            }
+            self.saveData()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
     }
 }

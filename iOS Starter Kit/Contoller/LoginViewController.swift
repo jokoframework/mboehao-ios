@@ -12,12 +12,12 @@ import Firebase
 import GoogleSignIn
 import SVProgressHUD
 import FBSDKLoginKit
+import LocalAuthentication
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var loginBoxConstraint: NSLayoutConstraint!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     @IBOutlet weak var fbButton: UIView!
     deinit {
@@ -25,18 +25,36 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //checkInternetConnectivity()
+        setUpGoogleButton()
+        setUpFacebookButton()
         //createKeyboardObservers()
+        //Fijarse si el usuario no cerró sesión
+        checkIfUserIsLogged()
+    }
+    func checkIfUserIsLogged() {
+        if FBSDKAccessToken.current() != nil {
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            loginWithCredentials(credentials: credential)
+        } else {
+            if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+                GIDSignIn.sharedInstance().signIn()
+            } else {
+                print("no hay usuarios activos")
+            }
+        }
+    }
+    func setUpGoogleButton() {
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        setUpGoogleButton()
+        googleSignInButton.style = GIDSignInButtonStyle.wide
+        googleSignInButton.colorScheme = GIDSignInButtonColorScheme.light
+    }
+    func setUpFacebookButton() {
         let facebookLoginButton = FBSDKLoginButton()
         facebookLoginButton.delegate = self
         facebookLoginButton.frame = CGRect(x: 0, y: 0, width: 312, height: 48)
         fbButton.addSubview(facebookLoginButton)
-    }
-    func setUpGoogleButton() {
-        googleSignInButton.style = GIDSignInButtonStyle.wide
-        googleSignInButton.colorScheme = GIDSignInButtonColorScheme.light
     }
     // MARK: Google Sing In
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -53,16 +71,19 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     // MARK: Facebook Sing In
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("Log out")
     }
     //swiftlint:disable:next line_length
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if error != nil {
-            print(error)
-            return
+        if result.isCancelled {
+            print("No se aceptaron los permisos")
         } else {
-            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            loginWithCredentials(credentials: credential)
+            if error != nil {
+                print("Error \(error)")
+            } else {
+                //swiftlint:disable:next line_length
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                loginWithCredentials(credentials: credential)
+            }
         }
     }
     func loginWithCredentials(credentials: AuthCredential) {
@@ -81,34 +102,38 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             }
         }
     }
-    func createKeyboardObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillShow,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillHide,
-                                               object: nil)
-    }
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if notification.userInfo != nil {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                loginBoxConstraint.constant = keyboardSize.height
-                view.setNeedsLayout()
-            }
-        }
-    }
+    // MARK: Keyboard Observers
+    //Las funciones abajo comentadas pueden ser utiles en caso de que sea necesario
+    //realizar alguna acción cuando el teclado aparece
+    //Como por ejemplo mover un uiview hacia arriba para que el teclado no lo oculte.
+    //También es necesario que el constraint que deseamos modificar sea un @IBOutlet
+//    func createKeyboardObservers() {
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(keyboardWillShow(notification:)),
+//                                               name: NSNotification.Name.UIKeyboardWillShow,
+//                                               object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(keyboardWillHide(notification:)),
+//                                               name: NSNotification.Name.UIKeyboardWillHide,
+//                                               object: nil)
+//    }
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if notification.userInfo != nil {
+//            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//                myViewConstraint.constant = keyboardSize.height
+//                view.setNeedsLayout()
+//            }
+//        }
+//    }
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        myViewConstraint.constant = 145.5
+//        view.setNeedsLayout()
+//    }
+    //Esta función detecta cuando se toca fuera de un textBox, y hace desaparecer el teclado
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        loginBoxConstraint.constant = 145.5
-        view.setNeedsLayout()
-    }
-    func isConnectedToInternet() -> Bool {
-        return NetworkReachabilityManager()!.isReachable
-    }
+
     @IBAction func logInBtnPressed(_ sender: UIButton) {
         performLogInWithEmailAndPassword()
     }
@@ -181,4 +206,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         SVProgressHUD.dismiss()
     }
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {}
+//    @IBAction func touchIDButtonPressed(_ sender: UIButton) {
+//        let context: LAContext = LAContext()
+//        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+//            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics,
+//                                   localizedReason: "Necesitamos TouchID",
+//                                   reply: { (wasSuccesful, _) in
+//                if wasSuccesful {
+//                    print("Exito")
+//                } else {
+//                    print("No fue exitoso")
+//                }
+//            })
+//        }
+//    }
 }
