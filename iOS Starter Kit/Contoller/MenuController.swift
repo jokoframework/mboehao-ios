@@ -14,7 +14,6 @@ import GoogleSignIn
 var PREFERENCES: Int = 1
 var LOGOUT: Int = 1
 
-
 class MenuController: UITableViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     override func viewDidLoad() {
@@ -35,7 +34,8 @@ class MenuController: UITableViewController {
                             let loginManager = FBSDKLoginManager()
                             GIDSignIn.sharedInstance().signOut()
                             loginManager.logOut()
-                            self.dismiss(animated: true, completion: nil)
+                            //self.dismiss(animated: true, completion: nil)
+                            self.performSegue(withIdentifier: "goBackToLoginView", sender: self)
                         } catch {
                             print("Error signing out")
                         }

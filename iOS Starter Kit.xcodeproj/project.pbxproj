@@ -12,7 +12,6 @@
 		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
 		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
 		5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972EEF9200F811800DB876C /* NotificationPreferences.swift */; };
-		597785081FE8013600B00920 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597785071FE8013600B00920 /* SWRevealViewController.m */; };
 		59BC12922010EBF60021AEF9 /* ui-border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC12912010EBF60021AEF9 /* ui-border.swift */; };
 		59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */; };
 		59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C541581FFFA8F100650242 /* CambiarPassword.storyboard */; };
@@ -39,8 +38,6 @@
 		5923D26E20063A2D005BD5BB /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
 		5972EEF9200F811800DB876C /* NotificationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferences.swift; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
-		597785061FE8013600B00920 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		597785071FE8013600B00920 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		59BC12912010EBF60021AEF9 /* ui-border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ui-border.swift"; sourceTree = "<group>"; };
 		59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		59C541581FFFA8F100650242 /* CambiarPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CambiarPassword.storyboard; sourceTree = "<group>"; };
@@ -93,21 +90,11 @@
 		597784FF1FE7FFAA00B00920 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */,
 				5923D27020063A34005BD5BB /* WPSAlertController */,
-				5977850A1FE8015A00B00920 /* SWRevealViewCotroller */,
 				59BC12912010EBF60021AEF9 /* ui-border.swift */,
+				597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */,
 			);
 			name = Libs;
-			sourceTree = "<group>";
-		};
-		5977850A1FE8015A00B00920 /* SWRevealViewCotroller */ = {
-			isa = PBXGroup;
-			children = (
-				597785061FE8013600B00920 /* SWRevealViewController.h */,
-				597785071FE8013600B00920 /* SWRevealViewController.m */,
-			);
-			name = SWRevealViewCotroller;
 			sourceTree = "<group>";
 		};
 		59C5415A1FFFA8FE00650242 /* Storyboards */ = {
@@ -352,6 +339,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -367,6 +355,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -387,7 +376,6 @@
 				59E2C6322007AF04007C6319 /* BodyViewController.swift in Sources */,
 				59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */,
 				59DC6D8A1FE14ED800513896 /* LoginViewController.swift in Sources */,
-				597785081FE8013600B00920 /* SWRevealViewController.m in Sources */,
 				59E994691FFD1FED0055A90F /* MenuController.swift in Sources */,
 				59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */,
 				59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */,

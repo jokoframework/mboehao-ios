@@ -205,7 +205,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         }
         SVProgressHUD.dismiss()
     }
-    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+        self.dismiss(animated: true, completion: nil)
+    }
 //    @IBAction func touchIDButtonPressed(_ sender: UIButton) {
 //        let context: LAContext = LAContext()
 //        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil) {

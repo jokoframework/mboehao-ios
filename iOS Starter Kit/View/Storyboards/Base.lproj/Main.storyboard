@@ -52,7 +52,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WXB-UR-EBb">
-                                <rect key="frame" x="31.5" y="182.5" width="312" height="68"/>
+                                <rect key="frame" x="31.5" y="183" width="312" height="68"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M64-0X-nbS">
                                         <rect key="frame" x="0.0" y="0.0" width="312" height="30"/>
@@ -108,9 +108,9 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z56-Aw-5Q9" customClass="DesignableButton" customModule="iOS_Starter_Kit" customModuleProvider="target">
-                                <rect key="frame" x="31.5" y="322.5" width="312" height="28"/>
+                                <rect key="frame" x="31.5" y="323" width="312" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="312" id="vbo-ep-pw5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="vbo-ep-pw5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="REGISTRARME COMO NUEVO USUARIO"/>
@@ -152,36 +152,12 @@
                         <outlet property="fbButton" destination="XUT-nd-4bH" id="INd-5Y-CFd"/>
                         <outlet property="googleSignInButton" destination="NkS-wy-y6L" id="nmE-do-tZV"/>
                         <outlet property="passwordTextField" destination="gz6-cu-psp" id="SRQ-EB-eN6"/>
-                        <segue destination="Y36-bV-KPh" kind="presentation" identifier="goToSecondController" id="cJC-1L-CiX"/>
+                        <segue destination="0Ev-1e-NaK" kind="show" identifier="goToSecondController" id="005-n2-BbB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440.80000000000001" y="31.934032983508249"/>
-        </scene>
-        <!--SW Reveal View Controller-->
-        <scene sceneID="3Tf-iD-ynW">
-            <objects>
-                <viewController storyboardIdentifier="mainViewID" title="SW Reveal View Controller" id="Y36-bV-KPh" customClass="SWRevealViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BT7-IZ-GjE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <viewLayoutGuide key="safeArea" id="b5I-oz-y2O"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ZJC-Z6-j7a">
-                        <barButtonItem key="leftBarButtonItem" image="menu" style="done" id="n7V-3B-vaB"/>
-                        <barButtonItem key="rightBarButtonItem" title="Log out" id="OhG-tq-kOp"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="T9K-cw-Ukx" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="Ovx-zQ-Uqo"/>
-                        <segue destination="0Ev-1e-NaK" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="3bz-Hf-aIb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QAP-y9-3NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1257" y="33"/>
+            <point key="canvasLocation" x="1020" y="-376"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="EPh-g9-buu">
@@ -195,7 +171,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="57" id="i1B-aC-C6f" customClass="ItemTableViewCell" customModule="iOS_Starter_Kit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="57" id="i1B-aC-C6f" customClass="ItemTableViewCell" customModule="iOS_Starter_Kit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i1B-aC-C6f" id="CP2-Fk-EUG">
@@ -238,6 +214,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Tb9-Lu-6ef" firstAttribute="top" secondItem="GKK-vd-se9" secondAttribute="top" id="JCw-FJ-xq7"/>
                             <constraint firstItem="Tb9-Lu-6ef" firstAttribute="bottom" secondItem="GKK-vd-se9" secondAttribute="bottom" id="JDj-ib-pwh"/>
@@ -247,10 +224,13 @@
                         <viewLayoutGuide key="safeArea" id="GKK-vd-se9"/>
                     </view>
                     <navigationItem key="navigationItem" id="yl9-v2-pnt">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="ZU9-p5-0CM"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="ZU9-p5-0CM">
+                            <connections>
+                                <segue destination="T9K-cw-Ukx" kind="show" id="X5k-2k-ID5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="OpenSideMenu" destination="ZU9-p5-0CM" id="eRt-8T-93W"/>
                         <outlet property="noItemView" destination="r3f-fD-mBJ" id="kpI-id-h9x"/>
                         <outlet property="tableView" destination="Tb9-Lu-6ef" id="Pjj-qI-8l8"/>
                         <segue destination="Tas-dZ-e6d" kind="show" identifier="showBodySegue" id="HsJ-iE-2eZ"/>
@@ -385,7 +365,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ClW-sw-emQ" kind="presentation" id="62b-qI-CcO"/>
+                                            <segue destination="ClW-sw-emQ" kind="show" id="62b-qI-CcO"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -415,7 +395,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="AfS-Qe-lqf" kind="presentation" id="nkT-mU-fZr"/>
+                                            <segue destination="AfS-Qe-lqf" kind="show" id="nkT-mU-fZr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jWn-Il-ssh">
@@ -452,11 +432,13 @@
                     <navigationItem key="navigationItem" id="ZU3-my-IFC"/>
                     <connections>
                         <outlet property="navigationBar" destination="ZU3-my-IFC" id="tdC-UB-JIc"/>
+                        <segue destination="xdA-DM-EGR" kind="unwind" identifier="goBackToLoginView" unwindAction="unwindToRootViewControllerWithSegue:" id="vMC-7Y-K2W"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWF-zu-8gl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xdA-DM-EGR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3021.5999999999999" y="366.56671664167919"/>
+            <point key="canvasLocation" x="3022" y="524"/>
         </scene>
         <!--preferencesViewID-->
         <scene sceneID="BEy-QX-CxO">
@@ -474,23 +456,28 @@
             </objects>
             <point key="canvasLocation" x="3881" y="359"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Side Menu Navigation Controller-->
         <scene sceneID="f5z-lh-iB8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T9K-cw-Ukx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="T9K-cw-Ukx" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JET-bZ-Yob">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9vj-VU-NPz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="5bd-rP-nDa" kind="relationship" relationship="rootViewController" id="bcH-0S-nNF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eh-FT-7FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="367"/>
+            <point key="canvasLocation" x="2036" y="524"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BqN-5a-maO">
