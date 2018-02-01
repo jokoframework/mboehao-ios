@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreData
+import SideMenu
 //URL de la API que se va a consultar.
 let GITHUBAPI = "https://api.github.com/repos/jokoframework/mboehao-ios/issues"
 
@@ -21,24 +22,23 @@ var data = [Item]()
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var currentSelectedCell: Int?
     var refresher: UIRefreshControl!
-    @IBOutlet weak var openSideMenu: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var noItemView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        openSideMenu.target = self.revealViewController()
-        openSideMenu.action = #selector(SWRevealViewController.revealToggle(_:))
-        view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        revealViewController().rearViewRevealWidth = 250
         //Agrega gesto para actualizar el tableView haciendo un swipe down
         refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(self.getTableData), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresher)
         tableView.tableFooterView = UIView()
         getTableData()
-
+        configSideMenu()
+    }
+    func configSideMenu() {
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.view)
+        SideMenuManager.default.menuFadeStatusBar = false
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
