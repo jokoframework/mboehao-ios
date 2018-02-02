@@ -13,9 +13,9 @@ import GoogleSignIn
 import SVProgressHUD
 import FBSDKLoginKit
 import LocalAuthentication
+import SwiftKeychainWrapper
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
-
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
@@ -31,6 +31,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         //createKeyboardObservers()
         //Fijarse si el usuario no cerró sesión
         checkIfUserIsLogged()
+        checkIfUserSetTouchID()
     }
     func checkIfUserIsLogged() {
         if FBSDKAccessToken.current() != nil {
@@ -41,6 +42,29 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 GIDSignIn.sharedInstance().signIn()
             } else {
                 print("no hay usuarios activos")
+            }
+        }
+    }
+    func checkIfUserSetTouchID() {
+        if let state = UserDefaults.standard.value(forKey: "saveCredential") as? Bool, state == true {
+            let context: LAContext = LAContext()
+            if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+                // swiftlint:disable:next line_length
+                context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Necesitamos validar TouchID", reply: { (wasSuccessful, _) in
+                    if wasSuccessful {
+                        DispatchQueue.main.async {
+                            self.emailTextField.text = KeychainWrapper.standard.string(forKey: "userEmailISK")
+                            self.passwordTextField.text = KeychainWrapper.standard.string(forKey: "userPasswordISK")
+                        }
+                        self.performLogInWithEmailAndPassword()
+                    } else {
+                        let alert = UIAlertController(title: "Error",
+                                                      message: "No se pudo verificar TouchID",
+                                                      preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                })
             }
         }
     }
@@ -67,7 +91,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         loginWithCredentials(credentials: credential)
     }
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        print("Bye bye")
     }
     // MARK: Facebook Sing In
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -144,8 +167,36 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                            completion: { (_, error) in
             if error == nil {
                 SVProgressHUD.dismiss()
-                self.passwordTextField.text = ""
-                self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                let actionSheet = UIAlertController(title: "Acceder con TouchID",
+                                                    message: "Desea utilizar TouchID para acceder en el futuro?",
+                                                    preferredStyle: .actionSheet)
+                actionSheet.addAction(UIAlertAction(title: "Sí", style: .default, handler: { (_) in
+                    //Validar touchID y luego guardar los datos
+                    let context: LAContext = LAContext()
+                    if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+                        // swiftlint:disable:next line_length
+                        context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Necesitamos validar TouchID", reply: { (wasSuccessful, _) in
+                            if wasSuccessful {
+                                print("TouchID se validó correctamente")
+                                //Si se pudo verificar TouchID entonces querémos guardar el mail
+                                //y password del usuario para hacer login sólo con TouchID
+                                self.saveInKeychain()
+                                UserDefaults.standard.set(true, forKey: "saveCredential")
+                            }
+                        })
+                    }
+                    //self.passwordTextField.text = ""
+                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                }))
+                actionSheet.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_) in
+                    UserDefaults.standard.set(false, forKey: "saveCredential")
+                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                }))
+                if let result = UserDefaults.standard.value(forKey: "saveCredential") as? Bool, result == false {
+                    self.present(actionSheet, animated: true, completion: nil)
+                } else {
+                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                }
             } else {
                 SVProgressHUD.dismiss()
                 self.presentAlertWithTitle(title: "Atención",
@@ -155,6 +206,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 })
             }
         })
+    }
+    func saveInKeychain() {
+        KeychainWrapper.standard.set(self.emailTextField.text!, forKey: "userEmailISK")
+        KeychainWrapper.standard.set(self.passwordTextField.text!, forKey: "userPasswordISK")
+        UserDefaults.standard.set(true, forKey: "saveCredential")
     }
     @IBAction func resetPasswordPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Resetear Contraseña",
@@ -208,18 +264,4 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
     }
-//    @IBAction func touchIDButtonPressed(_ sender: UIButton) {
-//        let context: LAContext = LAContext()
-//        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-//            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics,
-//                                   localizedReason: "Necesitamos TouchID",
-//                                   reply: { (wasSuccesful, _) in
-//                if wasSuccesful {
-//                    print("Exito")
-//                } else {
-//                    print("No fue exitoso")
-//                }
-//            })
-//        }
-//    }
 }

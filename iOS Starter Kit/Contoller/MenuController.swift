@@ -35,6 +35,7 @@ class MenuController: UITableViewController {
                             GIDSignIn.sharedInstance().signOut()
                             loginManager.logOut()
                             //self.dismiss(animated: true, completion: nil)
+                            UserDefaults.standard.set(false, forKey: "saveCredential")
                             self.performSegue(withIdentifier: "goBackToLoginView", sender: self)
                         } catch {
                             print("Error signing out")
@@ -42,6 +43,12 @@ class MenuController: UITableViewController {
                     }
                 })
             }
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LoginViewController {
+            destination.emailTextField.text = ""
+            destination.passwordTextField.text = ""
         }
     }
 }

@@ -17,5 +17,6 @@ pod 'SwiftyJSON'
 pod 'SwiftLint'
 pod 'FBSDKLoginKit'
 pod 'SideMenu'
+pod 'SwiftKeychainWrapper'
  
 end
