@@ -34,9 +34,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.addSubview(refresher)
         tableView.tableFooterView = UIView()
         getTableData()
-        configSideMenu()
-    }
-    func configSideMenu() {
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.view)
         SideMenuManager.default.menuFadeStatusBar = false
     }
