@@ -44,10 +44,11 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
 - [x] Guardar datos del usuario en forma local
 - [x] Recuperar datos del usuario
 - [x] SwiftLint para manejo de convenciones
+- [x] Incorporar Touch-ID
 
 ## Lista de funcionalidades futuras
 - [ ] Tarea Periódica aunque la app no esté activa
-- [ ] Incorporar Touch-ID
+- [x] ~~Incorporar Touch-ID~~
 
 
 ## Otros proyectos
