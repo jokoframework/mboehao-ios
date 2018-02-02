@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class CambiarPasswordController: UITableViewController {
 
@@ -16,14 +17,7 @@ class CambiarPasswordController: UITableViewController {
     @IBOutlet weak var newPasswordRepeatText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -32,14 +26,11 @@ class CambiarPasswordController: UITableViewController {
     }
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         if (currentPasswordText.text?.isEmpty)! {
-            WPSAlertController.presentOkayAlert(withTitle: "Atención",
-                                                message: "Debe ingresar su contraseña actual")
+            presentOkAlert(title: "Atención", message: "Debe ingresar su contraseña actual", currentView: self)
         } else if(newPasswordText.text?.isEmpty)! {
-            WPSAlertController.presentOkayAlert(withTitle: "Atención",
-                                                message: "Debe ingresar una nueva contraseña")
+            presentOkAlert(title: "Atención", message: "Debe ingresar una nueva contraseña", currentView: self)
         } else if(newPasswordRepeatText.text?.isEmpty)! {
-            WPSAlertController.presentOkayAlert(withTitle: "Atención",
-                                                message: "Debe repetir la nueva contraseña")
+            presentOkAlert(title: "Atención", message: "Debe repetir la nueva contraseña", currentView: self)
         } else {
             let user = Auth.auth().currentUser
             let credential = EmailAuthProvider.credential(withEmail: (user?.email)!,
@@ -53,22 +44,25 @@ class CambiarPasswordController: UITableViewController {
                                                            message: "La nueva contraseña se guardó de forma exitosa",
                                                            withOptions: true, options: "Ok",
                                                            completion: { (_) in
+                                    KeychainWrapper.standard.set(self.newPasswordText.text!, forKey: "userPasswordISK")
                                     self.dismiss(animated: true, completion: nil)
                                 })
                             } else {
-                                WPSAlertController.presentOkayAlert(withTitle: "Error",
-                                                                    message: "Error al intentar cambiar la contraseña")
+                                self.presentOkAlert(title: "Error",
+                                                    message: "Error al intentar cambiar la contraseña",
+                                                    currentView: self)
                             }
                         })
                     } else {
-                        WPSAlertController.presentOkayAlert(withTitle: "Atención",
-                                                            message: "Las contraseñas no coinciden")
+                       self.presentOkAlert(title: "Error", message: "Las contraseñas no coinciden", currentView: self)
                     }
                 } else {
-                    WPSAlertController.presentOkayAlert(withTitle: "Atención",
-                                                        message: "Contraseña actual incorrecta")
+                    self.presentOkAlert(title: "Error", message: "Contraseña actual incorrecta", currentView: self)
                 }
             })
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

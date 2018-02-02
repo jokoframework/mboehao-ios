@@ -158,6 +158,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
 
     @IBAction func logInBtnPressed(_ sender: UIButton) {
+        self.passwordTextField.resignFirstResponder()
         performLogInWithEmailAndPassword()
     }
     func performLogInWithEmailAndPassword() {

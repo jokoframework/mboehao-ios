@@ -12,7 +12,7 @@ import SwiftyJSON
 import CoreData
 import SideMenu
 //URL de la API que se va a consultar.
-let GITHUBAPI = "https://api.github.com/repos/jokoframework/mboehao-ios/issues"
+let GITHUBAPI = "https://api.github.com/repos/googlesamples/android-architecture/issues"
 
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!

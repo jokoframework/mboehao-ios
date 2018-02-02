@@ -23,22 +23,9 @@ extension UIViewController {
         }
         self.present(alertController, animated: true, completion: nil)
     }
-//    func checkInternetConnectivity() {
-//        let alert = WPSAlertController.init(title: "Sin conexión a internet",
-//                                            message: "Asegurese que su dispositivo esté conectado a Internet",
-//                                            preferredStyle: .alert)
-//        let reachabilityManager = NetworkReachabilityManager()
-//        //Mirar primero si la app fue iniciada ya sin conexión a internet
-////        if let firstCheck = reachabilityManager?.isReachable, !firstCheck {
-////            alert.show(animated: true)
-////        }
-//        reachabilityManager?.startListening()
-//        reachabilityManager?.listener = { _ in
-//            if let isNetworkReachable = reachabilityManager?.isReachable, !isNetworkReachable {
-//                alert.show(animated: true)
-//            } else {
-//                alert.dismiss(animated: true, completion: nil)
-//            }
-//        }
-//    }
+    func presentOkAlert(title: String, message: String, currentView: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        currentView.present(alert, animated: true, completion: nil)
+    }
 }
