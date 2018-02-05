@@ -209,9 +209,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         })
     }
     func saveInKeychain() {
-        KeychainWrapper.standard.set(self.emailTextField.text!, forKey: "userEmailISK")
-        KeychainWrapper.standard.set(self.passwordTextField.text!, forKey: "userPasswordISK")
-        UserDefaults.standard.set(true, forKey: "saveCredential")
+        DispatchQueue.main.async {
+            KeychainWrapper.standard.set(self.emailTextField.text!, forKey: "userEmailISK")
+            KeychainWrapper.standard.set(self.passwordTextField.text!, forKey: "userPasswordISK")
+            UserDefaults.standard.set(true, forKey: "saveCredential")
+        }
     }
     @IBAction func resetPasswordPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Resetear Contraseña",

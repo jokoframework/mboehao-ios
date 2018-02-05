@@ -73,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         Messaging.messaging().shouldEstablishDirectChannel = false
     }
-
 }
 
 //Para mostrar las notificaciones si la app está abierta.
