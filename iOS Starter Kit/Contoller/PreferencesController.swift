@@ -23,7 +23,6 @@ class PreferencesController: UITableViewController {
         loadPreferences()
         //Actualizar etiquetas a los valores guardados como default
         updateLabels()
-        set3DTouchShortcut()
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,14 +125,14 @@ class PreferencesController: UITableViewController {
         actionSheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
     }
-    func set3DTouchShortcut() {
-        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-            let shortcut = UIApplicationShortcutItem(type: "Preferencias",
-                                                     localizedTitle: "Notificación",
-                                                     localizedSubtitle: "Activado",
-                                                     icon: UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.alarm),
-                                                     userInfo: nil)
-            UIApplication.shared.shortcutItems = [shortcut]
-        }
-    }
+//    func set3DTouchShortcut() {
+//        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+//            let shortcut = UIApplicationShortcutItem(type: "Preferencias",
+//                                                     localizedTitle: "Notificación",
+//                                                     localizedSubtitle: "Activado",
+//                                                     icon: UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.alarm),
+//                                                     userInfo: nil)
+//            UIApplication.shared.shortcutItems = [shortcut]
+//        }
+//    }
 }

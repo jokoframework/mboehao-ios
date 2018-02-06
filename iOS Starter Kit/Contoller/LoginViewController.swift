@@ -25,7 +25,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //checkInternetConnectivity()
         setUpGoogleButton()
         setUpFacebookButton()
         //createKeyboardObservers()
