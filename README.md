@@ -45,6 +45,7 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
 - [x] Recuperar datos del usuario
 - [x] SwiftLint para manejo de convenciones
 - [x] Incorporar Touch-ID
+- [x] Peek & Pop sobre TableView
 
 ## Lista de funcionalidades futuras
 - [ ] Tarea Periódica aunque la app no esté activa
