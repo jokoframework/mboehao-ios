@@ -19,7 +19,8 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var number: UILabel!
 }
 var data = [Item]()
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource,
+                            UITableViewDelegate {
     var currentSelectedCell: Int?
     var refresher: UIRefreshControl!
     @IBOutlet weak var tableView: UITableView!
@@ -36,6 +37,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         getTableData()
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.view)
         SideMenuManager.default.menuFadeStatusBar = false
+        //Check si el dispositivo soporta 3D touch
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -107,4 +112,25 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.reloadData()
     }
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {}
+}
+
+extension MainViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           viewControllerForLocation location: CGPoint) -> UIViewController? {
+        //Obtener el indice de la celda que se está presionando
+        guard let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell else {return nil}
+        //instanciar el VC que se quiere mostrar como preview
+        guard let bodyVC = storyboard?.instantiateViewController(withIdentifier: "issueDetailVC") as?
+            BodyViewController else {return nil}
+        bodyVC.issueTitle = cell.title.text!
+        //swiftlint:disable:next line_length
+        bodyVC.bodyText = data[indexPath.row].body == "" ? "No hay descripción para este issue" : data[indexPath.row].body
+        previewingContext.sourceRect = cell.frame
+        return bodyVC
+    }
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           commit viewControllerToCommit: UIViewController) {
+        self.show(viewControllerToCommit, sender: self)
+    }
 }

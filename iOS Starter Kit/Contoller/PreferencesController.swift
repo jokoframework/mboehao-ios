@@ -14,8 +14,8 @@ class PreferencesController: UITableViewController {
 
     @IBOutlet weak var taskSwitch: UISwitch!
     @IBOutlet weak var timeLabel: UILabel!
-    var preferences = NotificationPreferences()
-    //Foler donde se guarda las preferencias del usuario
+    public var preferences = NotificationPreferences()
+    //Folder donde se guarda las preferencias del usuario
     let dataFilepath = FileManager.default.urls(for: .documentDirectory,
                                                 in: .userDomainMask).first?.appendingPathComponent("preferences.plist")
     override func viewDidLoad() {
@@ -125,4 +125,14 @@ class PreferencesController: UITableViewController {
         actionSheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
     }
+//    func set3DTouchShortcut() {
+//        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+//            let shortcut = UIApplicationShortcutItem(type: "Preferencias",
+//                                                     localizedTitle: "Notificación",
+//                                                     localizedSubtitle: "Activado",
+//                                                     icon: UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.alarm),
+//                                                     userInfo: nil)
+//            UIApplication.shared.shortcutItems = [shortcut]
+//        }
+//    }
 }
