@@ -35,12 +35,18 @@ class MainViewController: UIViewController, UITableViewDataSource,
         tableView.addSubview(refresher)
         tableView.tableFooterView = UIView()
         getTableData()
-        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.view)
-        SideMenuManager.default.menuFadeStatusBar = false
+        setSideMenu()
         //Check si el dispositivo soporta 3D touch
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
+    }
+    func setSideMenu() {
+        //swiftlint:disable line_length
+        SideMenuManager.default.menuLeftNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        SideMenuManager.defaultManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
+        SideMenuManager.default.menuFadeStatusBar = false
+        //swiftlint:enable line_length
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
