@@ -46,11 +46,19 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
 - [x] SwiftLint para manejo de convenciones
 - [x] Incorporar Touch-ID
 - [x] Peek & Pop sobre TableView
+- [x] Barra de busqueda
 
 ## Lista de funcionalidades futuras
 - [ ] Tarea Periódica aunque la app no esté activa
 - [x] ~~Incorporar Touch-ID~~
+- [x] ~~Barra de busqueda~~
 
 
 ## Otros proyectos
 Como referencia se utilizó el Proyecto Simple, que implementa varias de estas funcionalidades.
+
+## Demo
+
+<a href="https://imgflip.com/gif/246tzu"><img src="https://i.imgflip.com/246tzu.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/246u7z"><img src="https://i.imgflip.com/246u7z.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/246uc7"><img src="https://i.imgflip.com/246uc7.gif" title="made at imgflip.com"/></a>
