@@ -229,10 +229,16 @@
                                 <segue destination="T9K-cw-Ukx" kind="show" id="X5k-2k-ID5"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="B8E-yH-3EG">
+                            <connections>
+                                <action selector="searchBarButtonPressed:" destination="1gS-er-9OT" id="pYR-fI-Pbk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="noItemView" destination="r3f-fD-mBJ" id="kpI-id-h9x"/>
-                        <outlet property="tableView" destination="Tb9-Lu-6ef" id="Pjj-qI-8l8"/>
+                        <outlet property="searchDisplayController" destination="UAi-2L-V3F" id="Uhk-Qn-Ldc"/>
+                        <outlet property="tableView" destination="Tb9-Lu-6ef" id="xA8-vb-YM4"/>
                         <segue destination="Tas-dZ-e6d" kind="show" identifier="showBodySegue" id="HsJ-iE-2eZ"/>
                     </connections>
                 </viewController>
@@ -262,6 +268,14 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="bsu-Yy-yat"/>
                 </view>
+                <searchDisplayController id="UAi-2L-V3F">
+                    <connections>
+                        <outlet property="delegate" destination="1gS-er-9OT" id="9e9-c7-hRY"/>
+                        <outlet property="searchContentsController" destination="1gS-er-9OT" id="GnG-eo-3N1"/>
+                        <outlet property="searchResultsDataSource" destination="1gS-er-9OT" id="PHe-G2-cwB"/>
+                        <outlet property="searchResultsDelegate" destination="1gS-er-9OT" id="tXP-7D-upZ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3021.5999999999999" y="-376.46176911544228"/>
         </scene>

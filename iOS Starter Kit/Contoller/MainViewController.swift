@@ -19,10 +19,12 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var number: UILabel!
 }
 var data = [Item]()
+var filteredData = [Item]() //datos que se mostraran en el tableView
 class MainViewController: UIViewController, UITableViewDataSource,
-                            UITableViewDelegate {
+                            UITableViewDelegate, UISearchResultsUpdating {
     var currentSelectedCell: Int?
     var refresher: UIRefreshControl!
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var noItemView: UIView!
     override func viewDidLoad() {
@@ -36,6 +38,8 @@ class MainViewController: UIViewController, UITableViewDataSource,
         tableView.tableFooterView = UIView()
         getTableData()
         setSideMenu()
+        //Setup search controller
+        setupSearchController()
         //Check si el dispositivo soporta 3D touch
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
@@ -48,23 +52,28 @@ class MainViewController: UIViewController, UITableViewDataSource,
         SideMenuManager.default.menuFadeStatusBar = false
         //swiftlint:enable line_length
     }
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self as UISearchResultsUpdating
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ItemTableViewCell
-        cell?.title!.text = data[indexPath.row].title
-        cell?.number!.text = data[indexPath.row].number
+        cell?.title!.text = filteredData[indexPath.row].title
+        cell?.number!.text = filteredData[indexPath.row].number
         return cell!
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if data.count == 0 {
+        if filteredData.count == 0 {
             tableView.backgroundView = noItemView
         } else {
             tableView.backgroundView = nil
         }
-        return data.count
+        return filteredData.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentSelectedCell = indexPath.row
@@ -74,8 +83,8 @@ class MainViewController: UIViewController, UITableViewDataSource,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BodyViewController {
             // swiftlint:disable:next line_length
-            let text = data[currentSelectedCell!].body == "" ? "No hay descripción para este issue" : data[currentSelectedCell!].body
-            let titleText = data[currentSelectedCell!].title == "" ? "Sin titutlo" : data[currentSelectedCell!].title
+            let text = filteredData[currentSelectedCell!].body == "" ? "No hay descripción para este issue" : data[currentSelectedCell!].body
+            let titleText = filteredData[currentSelectedCell!].title == "" ? "Sin titutlo" : data[currentSelectedCell!].title
             destination.bodyText = text
             destination.issueTitle = titleText
         }
@@ -93,7 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource,
         }
     }
     func updateTableData(json: JSON) {
-        data.removeAll()
+        filteredData.removeAll()
 //      Ejemplo de JSON
 //       {
 //          "data1":"some data"
@@ -111,15 +120,33 @@ class MainViewController: UIViewController, UITableViewDataSource,
                 cellData.title = json[i]["title"].stringValue
                 cellData.body = json[i]["body"].stringValue
                 cellData.number = ("#"+json[i]["number"].stringValue)
-                data.append(cellData)
+                filteredData.append(cellData)
             }
         }
+        data = filteredData
         refresher.endRefreshing()
         tableView.reloadData()
     }
+    @IBAction func searchBarButtonPressed(_ sender: UIBarButtonItem) {
+        self.present(searchController, animated: true, completion: nil)
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            filteredData = data.filter { item in
+                return item.title.lowercased().contains(searchText.lowercased())
+            }
+        } else {
+            filteredData = data
+        }
+        tableView.reloadData()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchController.searchBar.text = ""
+        searchController.dismiss(animated: false, completion: nil)
+    }
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {}
 }
-
 extension MainViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
