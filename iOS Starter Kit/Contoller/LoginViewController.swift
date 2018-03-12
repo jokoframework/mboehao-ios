@@ -207,6 +207,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             }
         })
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSecondController" {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate!.window?.rootViewController = MainTabBarController()
+        }
+    }
     func saveInKeychain() {
         DispatchQueue.main.async {
             KeychainWrapper.standard.set(self.emailTextField.text!, forKey: "userEmailISK")

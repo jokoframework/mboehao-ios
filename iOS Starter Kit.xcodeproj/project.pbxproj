@@ -10,6 +10,7 @@
 		591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 591907A41FED31D7005F7667 /* GoogleService-Info.plist */; };
 		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
 		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
+		5969850F20569D810052B5F4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5969850E20569D810052B5F4 /* MainTabBarController.swift */; };
 		5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972EEF9200F811800DB876C /* NotificationPreferences.swift */; };
 		59BC12922010EBF60021AEF9 /* ui-border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC12912010EBF60021AEF9 /* ui-border.swift */; };
 		59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */; };
@@ -35,6 +36,7 @@
 		592185E320050A6E00FE601F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5923D26D20063A2C005BD5BB /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 		5923D26E20063A2D005BD5BB /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
+		5969850E20569D810052B5F4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5972EEF9200F811800DB876C /* NotificationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferences.swift; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
 		59BC12912010EBF60021AEF9 /* ui-border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ui-border.swift"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */,
 				592185E320050A6E00FE601F /* AlertManager.swift */,
 				59E2C6312007AF04007C6319 /* BodyViewController.swift */,
+				5969850E20569D810052B5F4 /* MainTabBarController.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				59DC6D8A1FE14ED800513896 /* LoginViewController.swift in Sources */,
 				59E994691FFD1FED0055A90F /* MenuController.swift in Sources */,
 				59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */,
+				5969850F20569D810052B5F4 /* MainTabBarController.swift in Sources */,
 				59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */,
 				5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */,
 				59BC12922010EBF60021AEF9 /* ui-border.swift in Sources */,
