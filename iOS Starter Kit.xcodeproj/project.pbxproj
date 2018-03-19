@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5902EDEA205FDBAC00114903 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5902EDE9205FDBAC00114903 /* misc.swift */; };
 		591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 591907A41FED31D7005F7667 /* GoogleService-Info.plist */; };
 		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
 		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
 		5969850F20569D810052B5F4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5969850E20569D810052B5F4 /* MainTabBarController.swift */; };
+		596985132056A96A0052B5F4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596985122056A96A0052B5F4 /* MapViewController.swift */; };
+		596985152056B2C70052B5F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596985142056B2C70052B5F4 /* Constants.swift */; };
 		5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972EEF9200F811800DB876C /* NotificationPreferences.swift */; };
 		59BC12922010EBF60021AEF9 /* ui-border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC12912010EBF60021AEF9 /* ui-border.swift */; };
 		59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */; };
 		59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C541581FFFA8F100650242 /* CambiarPassword.storyboard */; };
 		59C5415C1FFFAC6000650242 /* CambiarPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */; };
+		59D92036205957F300A73DE6 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D92035205957F300A73DE6 /* Coordinate.swift */; };
 		59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC6D871FE14ED800513896 /* AppDelegate.swift */; };
 		59DC6D8A1FE14ED800513896 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DC6D891FE14ED800513896 /* LoginViewController.swift */; };
 		59DC6D8D1FE14ED800513896 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DC6D8B1FE14ED800513896 /* Main.storyboard */; };
@@ -31,18 +35,22 @@
 
 /* Begin PBXFileReference section */
 		0FA3775BCCD33DA41DC75789 /* Pods-iOS Starter Kit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Starter Kit.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit.release.xcconfig"; sourceTree = "<group>"; };
+		5902EDE9205FDBAC00114903 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		591907A41FED31D7005F7667 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Starter Kit.entitlements"; sourceTree = "<group>"; };
 		592185E320050A6E00FE601F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5923D26D20063A2C005BD5BB /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 		5923D26E20063A2D005BD5BB /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
 		5969850E20569D810052B5F4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		596985122056A96A0052B5F4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		596985142056B2C70052B5F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5972EEF9200F811800DB876C /* NotificationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferences.swift; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
 		59BC12912010EBF60021AEF9 /* ui-border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ui-border.swift"; sourceTree = "<group>"; };
 		59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		59C541581FFFA8F100650242 /* CambiarPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CambiarPassword.storyboard; sourceTree = "<group>"; };
 		59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CambiarPasswordController.swift; sourceTree = "<group>"; };
+		59D92035205957F300A73DE6 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		59DC6D841FE14ED800513896 /* iOS Starter Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Starter Kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59DC6D871FE14ED800513896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59DC6D891FE14ED800513896 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +94,14 @@
 				0FA3775BCCD33DA41DC75789 /* Pods-iOS Starter Kit.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5902EDEB205FDBB800114903 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5902EDE9205FDBAC00114903 /* misc.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		5923D27020063A34005BD5BB /* WPSAlertController */ = {
@@ -141,10 +157,12 @@
 			isa = PBXGroup;
 			children = (
 				591907A61FED3207005F7667 /* iOS Starter Kit.entitlements */,
+				5902EDEB205FDBB800114903 /* Util */,
 				59E2C62E200786E6007C6319 /* Model */,
 				59E81A941FF6803C003CCA63 /* View */,
 				59E81A931FF68024003CCA63 /* Contoller */,
 				59E81A951FF68065003CCA63 /* Supporting Files */,
+				596985142056B2C70052B5F4 /* Constants.swift */,
 			);
 			path = "iOS Starter Kit";
 			sourceTree = "<group>";
@@ -154,6 +172,7 @@
 			children = (
 				59E2C62F20078730007C6319 /* Item.swift */,
 				5972EEF9200F811800DB876C /* NotificationPreferences.swift */,
+				59D92035205957F300A73DE6 /* Coordinate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,12 +183,13 @@
 				59DC6D871FE14ED800513896 /* AppDelegate.swift */,
 				59DC6D891FE14ED800513896 /* LoginViewController.swift */,
 				59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */,
+				5969850E20569D810052B5F4 /* MainTabBarController.swift */,
 				59E994681FFD1FED0055A90F /* MenuController.swift */,
 				59E99CE61FFE5AEA00D10676 /* PreferencesController.swift */,
 				59C5415B1FFFAC6000650242 /* CambiarPasswordController.swift */,
 				592185E320050A6E00FE601F /* AlertManager.swift */,
 				59E2C6312007AF04007C6319 /* BodyViewController.swift */,
-				5969850E20569D810052B5F4 /* MainTabBarController.swift */,
+				596985122056A96A0052B5F4 /* MapViewController.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -304,6 +324,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
@@ -321,6 +342,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
@@ -340,6 +362,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Starter Kit/Pods-iOS Starter Kit-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -381,7 +405,9 @@
 				59E2C6322007AF04007C6319 /* BodyViewController.swift in Sources */,
 				59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */,
 				59DC6D8A1FE14ED800513896 /* LoginViewController.swift in Sources */,
+				596985152056B2C70052B5F4 /* Constants.swift in Sources */,
 				59E994691FFD1FED0055A90F /* MenuController.swift in Sources */,
+				59D92036205957F300A73DE6 /* Coordinate.swift in Sources */,
 				59E99CE71FFE5AEA00D10676 /* PreferencesController.swift in Sources */,
 				5969850F20569D810052B5F4 /* MainTabBarController.swift in Sources */,
 				59DC6D881FE14ED800513896 /* AppDelegate.swift in Sources */,
@@ -389,6 +415,8 @@
 				59BC12922010EBF60021AEF9 /* ui-border.swift in Sources */,
 				592185E420050A6E00FE601F /* AlertManager.swift in Sources */,
 				5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */,
+				596985132056A96A0052B5F4 /* MapViewController.swift in Sources */,
+				5902EDEA205FDBAC00114903 /* misc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

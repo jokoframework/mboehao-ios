@@ -16,7 +16,11 @@ class MainTabBarController: UITabBarController {
     func loadChildrenViews() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "Main")
-        mainViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.favorites, tag: 0)
-        self.viewControllers = [mainViewController]
+        mainViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: Constants.UI.MainItem)
+        let mapViewController = MapViewController()
+        mapViewController.tabBarItem = UITabBarItem(title: "Maps",
+                                                    image: UIImage(named: "map"),
+                                                    tag: Constants.UI.MapItem)
+        self.viewControllers = [mainViewController, mapViewController]
     }
 }

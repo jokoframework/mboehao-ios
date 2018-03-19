@@ -34,9 +34,10 @@ class MenuController: UITableViewController {
                             let loginManager = FBSDKLoginManager()
                             GIDSignIn.sharedInstance().signOut()
                             loginManager.logOut()
-                            //self.dismiss(animated: true, completion: nil)
                             UserDefaults.standard.set(false, forKey: "saveCredential")
-                            self.performSegue(withIdentifier: "goBackToLoginView", sender: self)
+                            //self.dismiss(animated: true, completion: nil)
+                            //self.performSegue(withIdentifier: "goBackToLoginView", sender: self)
+                            self.backToRootViewController()
                         } catch {
                             print("Error signing out")
                         }
@@ -44,6 +45,12 @@ class MenuController: UITableViewController {
                 })
             }
         }
+    }
+    func backToRootViewController() {
+        let view: UIStoryboard? = storyboard
+        let vc: UIViewController = view!.instantiateViewController(withIdentifier: "Login")
+        let window: UIWindow = (UIApplication.shared.delegate?.window!!)!
+        window.rootViewController = vc
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LoginViewController {

@@ -14,12 +14,15 @@ import SVProgressHUD
 import FBSDKLoginKit
 import LocalAuthentication
 import SwiftKeychainWrapper
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
+    //static let sharedInstance = LoginViewController()
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     @IBOutlet weak var fbButton: UIView!
+    var loadingView: NVActivityIndicatorView?
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -110,9 +113,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     func loginWithCredentials(credentials: AuthCredential) {
         SVProgressHUD.show()
+        //showLoading(true)
         Auth.auth().signIn(with: credentials) { (_, error) in
             if error == nil {
                 SVProgressHUD.dismiss()
+                //self.showLoading(false)
                 self.performSegue(withIdentifier: "goToSecondController", sender: nil)
             } else {
                 self.presentAlertWithTitle(title: "Atención",
@@ -121,6 +126,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                                            completion: { (_) in
                 })
                 SVProgressHUD.dismiss()
+                //self.showLoading(false)
             }
         }
     }
@@ -271,5 +277,19 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController {
+    func showLoading(_ status: Bool) {
+        if(status == true) {
+            let initialFrame = self.view.frame
+            let frame = CGRect(x: (initialFrame.width) / 2 - 20, y: (initialFrame.height) / 2 - 20, width: 40, height: 40)
+            loadingView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.blue, padding: nil)
+            self.view.addSubview(loadingView!)
+            loadingView?.startAnimating()
+        } else {
+            loadingView?.stopAnimating()
+        }
     }
 }
