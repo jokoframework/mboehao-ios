@@ -15,7 +15,7 @@
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="iOS_Starter_Kit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="iOS_Starter_Kit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="1020" y="-376"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Main-->
         <scene sceneID="EPh-g9-buu">
             <objects>
-                <viewController title="Main View Controller" automaticallyAdjustsScrollViewInsets="NO" id="1gS-er-9OT" customClass="MainViewController" customModule="iOS_Starter_Kit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" automaticallyAdjustsScrollViewInsets="NO" id="1gS-er-9OT" customClass="MainViewController" customModule="iOS_Starter_Kit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ms4-fR-QMz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,7 +446,7 @@
                     <navigationItem key="navigationItem" id="ZU3-my-IFC"/>
                     <connections>
                         <outlet property="navigationBar" destination="ZU3-my-IFC" id="tdC-UB-JIc"/>
-                        <segue destination="xdA-DM-EGR" kind="unwind" identifier="goBackToLoginView" unwindAction="unwindToRootViewControllerWithSegue:" id="vMC-7Y-K2W"/>
+                        <segue destination="xdA-DM-EGR" kind="unwind" identifier="goBackToLoginView" unwindAction="unwindToRootViewControllerWithSegue:" id="CJE-T3-Kwp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWF-zu-8gl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,7 +496,7 @@
         <!--Navigation Controller-->
         <scene sceneID="BqN-5a-maO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Ev-1e-NaK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Main" automaticallyAdjustsScrollViewInsets="NO" id="0Ev-1e-NaK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GsF-qR-I9b">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

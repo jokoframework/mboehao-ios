@@ -15,6 +15,7 @@ import GoogleSignIn
 import UserNotifications
 import Alamofire
 import FBSDKCoreKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -32,10 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 print("Error en el proceso de autorización")
             }
         }
-
         UIApplication.shared.registerForRemoteNotifications()
         //Configurar Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        //Configurar Google Maps
+        setupGoogleMaps()
         //Alerta de falta de conexión a Internet
         let alert = WPSAlertController.init(title: "Sin conexión a internet",
                                             message: "Asegurese que su dispositivo esté conectado a Internet",
@@ -55,6 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                                                                                       annotation: [:])
         // swiftlint:enable line_length
         return googleDidHandle || facebookDidHandle
+    }
+    func setupGoogleMaps() {
+        GMSServices.provideAPIKey("AIzaSyA_jpA_u7ZQ8DGOKPQU6Fu2KypdEn50_7M")
     }
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print("El usuario se desconectó de la app")

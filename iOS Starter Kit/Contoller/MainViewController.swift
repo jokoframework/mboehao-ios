@@ -29,6 +29,7 @@ class MainViewController: UIViewController, UITableViewDataSource,
     @IBOutlet var noItemView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //setTabBar()
         tableView.dataSource = self
         tableView.delegate = self
         //Agrega gesto para actualizar el tableView haciendo un swipe down
@@ -44,6 +45,11 @@ class MainViewController: UIViewController, UITableViewDataSource,
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
+    }
+    func setTabBar() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate!.window?.rootViewController = MainTabBarController()
+        //appDelegate!.window?.makeKeyAndVisible()
     }
     func setSideMenu() {
         //swiftlint:disable line_length

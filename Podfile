@@ -18,5 +18,8 @@ pod 'SwiftLint'
 pod 'FBSDKLoginKit'
 pod 'SideMenu'
 pod 'SwiftKeychainWrapper'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'NVActivityIndicatorView'
  
 end
