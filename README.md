@@ -47,15 +47,19 @@ Trabajo para relevar una lista de funcionalidades que pueden ser reutilzadas en 
 - [x] Incorporar Touch-ID
 - [x] Peek & Pop sobre TableView
 - [x] Barra de busqueda
+- [x] TabBar
+- [x] Soporte para Google Maps
 
 ## Lista de funcionalidades futuras
 - [ ] Tarea Periódica aunque la app no esté activa
 - [x] ~~Incorporar Touch-ID~~
 - [x] ~~Barra de busqueda~~
+- [x] ~~TabBar~~
+- [x] ~~Soporte para Google Maps~~
 
 
 ## Otros proyectos
-Como referencia se utilizó el Proyecto Simple, que implementa varias de estas funcionalidades.
+Como referencia se utilizaron los proyectos Simple e Influenciadores, que implementan varias de estas funcionalidades.
 
 ## Demo
 
