@@ -126,8 +126,8 @@ extension MapViewController: CLLocationManagerDelegate, GMSMapViewDelegate {
         CATransaction.begin()
         CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
         mapView.animate(to: GMSCameraPosition.camera(withTarget: marker.position, zoom: 15.0))
-        mapsbutton.isHidden = false
         CATransaction.commit()
+        mapsbutton.isHidden = false
         currentSelectedMarker = marker.position
         mapView.selectedMarker = marker
         return true

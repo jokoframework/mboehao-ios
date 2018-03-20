@@ -21,10 +21,12 @@ struct Constants {
         }
     }
     struct URL {
+        static let GithubAPI = "https://api.github.com/repos/googlesamples/android-architecture/issues"
         static let MapsURL: String = "comgooglemaps://"
         static func mapsURLDirections(latitude: Double, longitude: Double) -> NSURL {
             let url = NSURL(string: "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving")!
             return url
         }
+        static let PhoneURL = "tel://+59521603336"
     }
 }
