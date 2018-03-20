@@ -11,8 +11,6 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 import SideMenu
-//URL de la API que se va a consultar.
-let GITHUBAPI = "https://api.github.com/repos/googlesamples/android-architecture/issues"
 
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
@@ -97,7 +95,7 @@ class MainViewController: UIViewController, UITableViewDataSource,
     }
     //Función que hace el Get Request
     @objc func getTableData() {
-        Alamofire.request(GITHUBAPI).responseJSON { (response) in
+        Alamofire.request(Constants.URL.GithubAPI).responseJSON { (response) in
             if response.result.isSuccess {
                 //En dataJSON se almacena el JSON resultante del request
                 let dataJSON: JSON = JSON(response.result.value!)

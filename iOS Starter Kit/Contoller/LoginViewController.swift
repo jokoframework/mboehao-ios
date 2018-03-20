@@ -34,6 +34,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         //Fijarse si el usuario no cerró sesión
         checkIfUserIsLogged()
         checkIfUserSetTouchID()
+        setUpTextField(emailTextField)
+        setUpTextField(passwordTextField)
     }
     func checkIfUserIsLogged() {
         if FBSDKAccessToken.current() != nil {
@@ -69,6 +71,17 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 })
             }
         }
+    }
+    func setUpTextField(_ textField: UITextField) {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: textField.frame.height - width,
+                              width: textField.frame.width,
+                              height: textField.frame.height)
+        border.borderWidth = width
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
     }
     func setUpGoogleButton() {
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -277,6 +290,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func contactButton(_ sender: DesignableButton) {
+        guard let number = URL(string: Constants.URL.PhoneURL) else {return}
+        if UIApplication.shared.canOpenURL(number) {
+            UIApplication.shared.open(number, options: [:], completionHandler: nil)
+        }
     }
 }
 
