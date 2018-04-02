@@ -11,17 +11,16 @@ import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
 
-var PREFERENCES: Int = 1
+var ACCESO: Int = 1
 var LOGOUT: Int = 1
 
 class MenuController: UITableViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.title = Auth.auth().currentUser?.email
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == PREFERENCES {
+        if indexPath.section == ACCESO {
             if indexPath.row == LOGOUT {
                 presentAlertWithTitle(title: "Loging out",
                                       message: "Está seguro que desea salir?",
@@ -35,22 +34,27 @@ class MenuController: UITableViewController {
                             GIDSignIn.sharedInstance().signOut()
                             loginManager.logOut()
                             UserDefaults.standard.set(false, forKey: "saveCredential")
-                            //self.dismiss(animated: true, completion: nil)
-                            //self.performSegue(withIdentifier: "goBackToLoginView", sender: self)
                             self.backToRootViewController()
                         } catch {
                             print("Error signing out")
                         }
                     }
                 })
+            } else {
+                let changePasswordStoryboard = UIStoryboard(name: "CambiarPassword", bundle: Bundle.main)
+                let changePasswordVC = changePasswordStoryboard.instantiateViewController(withIdentifier: "Password")
+                navigationController?.pushViewController(changePasswordVC, animated: true)
             }
+        } else {
+            //Se tocó la Tarea Periódica
+            let preferencesStoryboard = UIStoryboard(name: "Preferences", bundle: Bundle.main)
+            let preferencesVC = preferencesStoryboard.instantiateViewController(withIdentifier: "Tarea")
+            navigationController?.pushViewController(preferencesVC, animated: true)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     func backToRootViewController() {
-        let view: UIStoryboard? = storyboard
-        let vc: UIViewController = view!.instantiateViewController(withIdentifier: "Login")
-        let window: UIWindow = (UIApplication.shared.delegate?.window!!)!
-        window.rootViewController = vc
+        performSegue(withIdentifier: "goToRootViewController", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LoginViewController {

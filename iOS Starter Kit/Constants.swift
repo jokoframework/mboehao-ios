@@ -15,6 +15,7 @@ struct Constants {
         static let MapItem: Int = 1
         struct Colors {
             static let NavigationColor = UIColor(netHex: 0x3680F1)
+            static let PrimaryColor = UIColor(netHex: 0x0069AF)
         }
         struct Size {
             static let StatusBar = UIApplication.shared.statusBarFrame.height
