@@ -27,7 +27,6 @@ class MainViewController: UIViewController, UITableViewDataSource,
     @IBOutlet var noItemView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setTabBar()
         tableView.dataSource = self
         tableView.delegate = self
         //Agrega gesto para actualizar el tableView haciendo un swipe down
@@ -36,18 +35,13 @@ class MainViewController: UIViewController, UITableViewDataSource,
         tableView.addSubview(refresher)
         tableView.tableFooterView = UIView()
         getTableData()
-        setSideMenu()
+        //setSideMenu()
         //Setup search controller
         setupSearchController()
         //Check si el dispositivo soporta 3D touch
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
         }
-    }
-    func setTabBar() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate!.window?.rootViewController = MainTabBarController()
-        //appDelegate!.window?.makeKeyAndVisible()
     }
     func setSideMenu() {
         //swiftlint:disable line_length
@@ -149,7 +143,6 @@ class MainViewController: UIViewController, UITableViewDataSource,
         searchController.searchBar.text = ""
         searchController.dismiss(animated: false, completion: nil)
     }
-    @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {}
 }
 extension MainViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,

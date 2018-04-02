@@ -17,6 +17,8 @@ class CambiarPasswordController: UITableViewController {
     @IBOutlet weak var newPasswordRepeatText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let item = UIBarButtonItem(title: "Guardar", style: .plain, target: self, action: #selector(saveButtonPressed))
+        self.navigationItem.setRightBarButton(item, animated: true)
     }
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -24,7 +26,7 @@ class CambiarPasswordController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+    @objc func saveButtonPressed() {
         if (currentPasswordText.text?.isEmpty)! {
             presentOkAlert(title: "Atención", message: "Debe ingresar su contraseña actual", currentView: self)
         } else if(newPasswordText.text?.isEmpty)! {
@@ -32,6 +34,7 @@ class CambiarPasswordController: UITableViewController {
         } else if(newPasswordRepeatText.text?.isEmpty)! {
             presentOkAlert(title: "Atención", message: "Debe repetir la nueva contraseña", currentView: self)
         } else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let user = Auth.auth().currentUser
             let credential = EmailAuthProvider.credential(withEmail: (user?.email)!,
                                                           password: currentPasswordText.text!)
@@ -60,6 +63,7 @@ class CambiarPasswordController: UITableViewController {
                     self.presentOkAlert(title: "Error", message: "Contraseña actual incorrecta", currentView: self)
                 }
             })
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

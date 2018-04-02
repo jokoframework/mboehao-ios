@@ -11,30 +11,24 @@ import GoogleMaps
 import SwiftyJSON
 
 class MapViewController: UIViewController {
+    @IBOutlet weak var mapView: GMSMapView!
     private let locationManager = CLLocationManager()
-    var addressLabel: String? = "Buscando ubicación.."
-    let addressView = UILabel()
-    var mapView: GMSMapView?
     let mapsbutton = UIButton(type: .custom)
     var currentSelectedMarker: CLLocationCoordinate2D?
     override func viewDidLoad() {
-        super.viewDidLoad()
+        self.navigationItem.title = "Mapa"
         locationManager.delegate = self
+        mapView.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        setMapUI()
+        setMapPreferences()
         loadCoordinates()
         createDirectionsButton()
-        //setAddressLabelView()
     }
-    private func setMapUI() {
-        let frame = CGRect(x: view.frame.origin.x, y: Constants.UI.Size.StatusBar,
-                           width: view.frame.size.width,
-                           height: view.frame.size.height - (self.tabBarController?.tabBar.frame.size.height)! - Constants.UI.Size.StatusBar)
-        let camera = GMSCameraPosition.camera(withTarget: (locationManager.location?.coordinate)!, zoom: 10.0)
-        mapView = GMSMapView.map(withFrame: frame, camera: camera)
-        self.mapView!.delegate = self
-        self.view.backgroundColor = UIColor.white
-        self.view.addSubview(mapView!)
+    func setMapPreferences() {
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        let camera = GMSCameraPosition(target: (locationManager.location?.coordinate)!, zoom: 10.0, bearing: 0, viewingAngle: 0)
+        mapView.camera = camera
     }
     private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D,
                                           completionHandler: @escaping ([String]) -> Void) {
@@ -47,17 +41,9 @@ class MapViewController: UIViewController {
             completionHandler(lines)
         }
     }
-    func setAddressLabelView() {
-        let yAxis = self.view.frame.size.height - (self.tabBarController?.tabBar.frame.size.height)! - 60
-        addressView.frame = CGRect(x: 0, y: yAxis, width: self.view.frame.size.width, height: 60)
-        addressView.textAlignment = NSTextAlignment.center
-        addressView.backgroundColor = UIColor.white
-        addressView.shadowOpacity = 0.85
-        addressView.numberOfLines = 0
-        addressView.text = addressLabel
-        self.view.addSubview(addressView)
-    }
     func loadCoordinates() {
+        mapView?.isMyLocationEnabled = true
+        mapView?.settings.myLocationButton = true
         let markers: JSON = [
             ["latitude": -25.347673, "longitude": -57.430284, "icon": "atm"],
             ["latitude": -25.343640, "longitude": -57.504099, "icon": "dog"],
@@ -88,19 +74,18 @@ class MapViewController: UIViewController {
         }
     }
     func createDirectionsButton() {
-        let frame = CGRect(x: view.frame.size.width - 66,
-        y: view.frame.size.height - (self.tabBarController?.tabBar.frame.size.height)! - 130,
-        width: 57, height: 57)
-        mapsbutton.frame = frame
-        mapsbutton.layer.cornerRadius = 0.5 * mapsbutton.bounds.size.width
+        view.addSubview(mapsbutton)
+        mapsbutton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: .init(top: 0, left: 0, bottom: 130, right: 10),
+                          size: .init(width: 57, height: 57))
+        mapsbutton.cornerRadius = 28.5
         mapsbutton.clipsToBounds = true
-        mapsbutton.backgroundColor = UIColor.lightGray
+        mapsbutton.backgroundColor = Constants.UI.Colors.PrimaryColor
         mapsbutton.setImage(UIImage(named: "navigation"), for: .normal)
-        mapsbutton.backgroundColor = Constants.UI.Colors.NavigationColor
         mapsbutton.imageEdgeInsets = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0)
         mapsbutton.addTarget(self, action: #selector(mapsButtonAction), for: .touchUpInside)
         mapsbutton.isHidden = true
-        self.view.addSubview(mapsbutton)
     }
     @objc func mapsButtonAction() {
         if(UIApplication.shared.canOpenURL(URL(string: Constants.URL.MapsURL)!)) {
@@ -127,16 +112,27 @@ extension MapViewController: CLLocationManagerDelegate, GMSMapViewDelegate {
         CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
         mapView.animate(to: GMSCameraPosition.camera(withTarget: marker.position, zoom: 15.0))
         CATransaction.commit()
+        mapsbutton.alpha = 0
         mapsbutton.isHidden = false
+        UIView.animate(withDuration: 0.5) {
+            self.mapsbutton.alpha = 1
+        }
+
         currentSelectedMarker = marker.position
         mapView.selectedMarker = marker
         return true
     }
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        UIView.animate(withDuration: 0.5) {
+            self.mapsbutton.alpha = 0
+        }
         mapsbutton.isHidden = true
         mapView.selectedMarker = nil
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.startUpdatingLocation()
+        guard let location = locations.first else {
+            return
+        }
+        locationManager.stopUpdatingLocation()
     }
 }

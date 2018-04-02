@@ -22,12 +22,8 @@ class PreferencesController: UITableViewController {
         super.viewDidLoad()
         loadPreferences()
         //Actualizar etiquetas a los valores guardados como default
+        taskSwitch.addTarget(self, action: #selector(savePreferences), for: UIControlEvents.valueChanged)
         updateLabels()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     func loadPreferences() {
         if let data = try? Data(contentsOf: dataFilepath!) {
@@ -42,10 +38,6 @@ class PreferencesController: UITableViewController {
     func updateLabels() {
         timeLabel.text = preferences.timeLabel
         taskSwitch.setOn(preferences.taskSwitch, animated: true)
-    }
-    @IBAction func unwindToMVC(_ sender: UIBarButtonItem) {
-        //save taskSwitch status
-        self.dismiss(animated: true, completion: nil)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
@@ -101,38 +93,16 @@ class PreferencesController: UITableViewController {
             }
         }
     }
-    @IBAction func savedPreferences(_ sender: UIBarButtonItem) {
-        let actionSheet = UIAlertController(title: "Guardando..",
-                                            message: "Está seguro que desea guardar los cambios?",
-                                            preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Si", style: .default, handler: { (_) in
-            self.preferences.taskSwitch = self.taskSwitch.isOn
-            if self.self.taskSwitch.isOn {
-                self.timedNotification(time: self.preferences.time, completion: { (_) in
-                    //swiftlint:disable:next line_length
-                    let alert = UIAlertController(title: "Éxito!", message: "La alarma fue programada con éxito para las \(self.preferences.timeLabel)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                })
-            } else {
-                //swiftlint:disable:next line_length
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["customNotification"])
-                WPSAlertController.presentOkayAlert(withTitle: "Listo",
-                                                    message: "Los cambios fueron guardados con éxito")
-            }
-            self.saveData()
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
+    @objc func savePreferences() {
+        if self.taskSwitch.isOn {
+            self.preferences.taskSwitch = true
+            self.timedNotification(time: self.preferences.time, completion: { (_) in
+                print("La alarma se configuró correctamente")
+            })
+        } else {
+            self.preferences.taskSwitch = false
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["customNotification"])
+        }
+        self.saveData()
     }
-//    func set3DTouchShortcut() {
-//        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-//            let shortcut = UIApplicationShortcutItem(type: "Preferencias",
-//                                                     localizedTitle: "Notificación",
-//                                                     localizedSubtitle: "Activado",
-//                                                     icon: UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.alarm),
-//                                                     userInfo: nil)
-//            UIApplication.shared.shortcutItems = [shortcut]
-//        }
-//    }
 }

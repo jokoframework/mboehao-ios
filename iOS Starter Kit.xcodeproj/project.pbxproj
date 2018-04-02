@@ -11,10 +11,12 @@
 		591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 591907A41FED31D7005F7667 /* GoogleService-Info.plist */; };
 		592185E420050A6E00FE601F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592185E320050A6E00FE601F /* AlertManager.swift */; };
 		5923D26F20063A2D005BD5BB /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5923D26D20063A2C005BD5BB /* WPSAlertController.m */; };
+		59494E0D206145D0006E61FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59494E0C206145D0006E61FC /* Login.storyboard */; };
 		5969850F20569D810052B5F4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5969850E20569D810052B5F4 /* MainTabBarController.swift */; };
 		596985132056A96A0052B5F4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596985122056A96A0052B5F4 /* MapViewController.swift */; };
 		596985152056B2C70052B5F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596985142056B2C70052B5F4 /* Constants.swift */; };
 		5972EEFA200F811800DB876C /* NotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972EEF9200F811800DB876C /* NotificationPreferences.swift */; };
+		597A5D2E206C0C3100C49F38 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597A5D2D206C0C3100C49F38 /* Maps.storyboard */; };
 		59BC12922010EBF60021AEF9 /* ui-border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC12912010EBF60021AEF9 /* ui-border.swift */; };
 		59BC21501FE2BCDA0056FF69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */; };
 		59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C541581FFFA8F100650242 /* CambiarPassword.storyboard */; };
@@ -41,11 +43,13 @@
 		592185E320050A6E00FE601F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5923D26D20063A2C005BD5BB /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 		5923D26E20063A2D005BD5BB /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
+		59494E0C206145D0006E61FC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5969850E20569D810052B5F4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		596985122056A96A0052B5F4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		596985142056B2C70052B5F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5972EEF9200F811800DB876C /* NotificationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferences.swift; sourceTree = "<group>"; };
 		597785041FE8013500B00920 /* iOS Starter Kit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Starter Kit-Bridging-Header.h"; sourceTree = "<group>"; };
+		597A5D2D206C0C3100C49F38 /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
 		59BC12912010EBF60021AEF9 /* ui-border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ui-border.swift"; sourceTree = "<group>"; };
 		59BC214F1FE2BCDA0056FF69 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		59C541581FFFA8F100650242 /* CambiarPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CambiarPassword.storyboard; sourceTree = "<group>"; };
@@ -126,10 +130,12 @@
 		59C5415A1FFFA8FE00650242 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				59494E0C206145D0006E61FC /* Login.storyboard */,
 				59DC6D8B1FE14ED800513896 /* Main.storyboard */,
 				59E99CE41FFE4E9300D10676 /* Preferences.storyboard */,
 				59C541581FFFA8F100650242 /* CambiarPassword.storyboard */,
 				59DC6D901FE14ED800513896 /* LaunchScreen.storyboard */,
+				597A5D2D206C0C3100C49F38 /* Maps.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -286,10 +292,12 @@
 			files = (
 				59DC6D921FE14ED800513896 /* LaunchScreen.storyboard in Resources */,
 				59DC6D8F1FE14ED800513896 /* Assets.xcassets in Resources */,
+				59494E0D206145D0006E61FC /* Login.storyboard in Resources */,
 				59DC6D8D1FE14ED800513896 /* Main.storyboard in Resources */,
 				59C541591FFFA8F100650242 /* CambiarPassword.storyboard in Resources */,
 				59E99CE51FFE4E9300D10676 /* Preferences.storyboard in Resources */,
 				591907A51FED31D8005F7667 /* GoogleService-Info.plist in Resources */,
+				597A5D2E206C0C3100C49F38 /* Maps.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

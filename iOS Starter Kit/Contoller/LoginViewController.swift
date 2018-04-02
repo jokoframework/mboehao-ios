@@ -17,7 +17,7 @@ import SwiftKeychainWrapper
 import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
-    //static let sharedInstance = LoginViewController()
+    //Nuevos Outlets
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
@@ -34,8 +34,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         //Fijarse si el usuario no cerró sesión
         checkIfUserIsLogged()
         checkIfUserSetTouchID()
-        setUpTextField(emailTextField)
-        setUpTextField(passwordTextField)
+        //setUpTextField(emailTextField)
+        //setUpTextField(passwordTextField)
     }
     func checkIfUserIsLogged() {
         if FBSDKAccessToken.current() != nil {
@@ -86,13 +86,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     func setUpGoogleButton() {
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        googleSignInButton.style = GIDSignInButtonStyle.wide
         googleSignInButton.colorScheme = GIDSignInButtonColorScheme.light
     }
     func setUpFacebookButton() {
         let facebookLoginButton = FBSDKLoginButton()
         facebookLoginButton.delegate = self
-        facebookLoginButton.frame = CGRect(x: 0, y: 0, width: 312, height: 48)
+        facebookLoginButton.frame = CGRect(x: 0, y: 0, width: 239, height: 48)
         fbButton.addSubview(facebookLoginButton)
     }
     // MARK: Google Sing In
@@ -126,12 +125,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     func loginWithCredentials(credentials: AuthCredential) {
         SVProgressHUD.show()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         //showLoading(true)
         Auth.auth().signIn(with: credentials) { (_, error) in
             if error == nil {
                 SVProgressHUD.dismiss()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 //self.showLoading(false)
-                self.performSegue(withIdentifier: "goToSecondController", sender: nil)
+                //self.performSegue(withIdentifier: "goToSecondController", sender: nil)
+                self.segueToMainViewController()
             } else {
                 self.presentAlertWithTitle(title: "Atención",
                                            message: "Hubo un problema al intentar acceder. Intente más",
@@ -139,6 +141,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                                            completion: { (_) in
                 })
                 SVProgressHUD.dismiss()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 //self.showLoading(false)
             }
         }
@@ -175,17 +178,19 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         self.view.endEditing(true)
     }
 
-    @IBAction func logInBtnPressed(_ sender: UIButton) {
+    @IBAction func loginBtnPressed(_ sender: UIButton) {
         self.passwordTextField.resignFirstResponder()
         performLogInWithEmailAndPassword()
     }
     func performLogInWithEmailAndPassword() {
         SVProgressHUD.show()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Auth.auth().signIn(withEmail: emailTextField.text!,
                            password: passwordTextField.text!,
                            completion: { (_, error) in
             if error == nil {
                 SVProgressHUD.dismiss()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 let actionSheet = UIAlertController(title: "Acceder con TouchID",
                                                     message: "Desea utilizar TouchID para acceder en el futuro?",
                                                     preferredStyle: .actionSheet)
@@ -202,22 +207,27 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                                 self.saveInKeychain()
                                 UserDefaults.standard.set(true, forKey: "saveCredential")
                             }
+                            self.segueToMainViewController()
                         })
                     }
                     //self.passwordTextField.text = ""
-                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                    //self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                    
                 }))
                 actionSheet.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_) in
                     UserDefaults.standard.set(false, forKey: "saveCredential")
-                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                    //self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                    self.segueToMainViewController()
                 }))
                 if let result = UserDefaults.standard.value(forKey: "saveCredential") as? Bool, result == false {
                     self.present(actionSheet, animated: true, completion: nil)
                 } else {
-                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+//                    self.performSegue(withIdentifier: "goToSecondController", sender: self)
+                    self.segueToMainViewController()
                 }
             } else {
                 SVProgressHUD.dismiss()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 self.presentAlertWithTitle(title: "Atención",
                                            message: "Usuario o contraseña incorrecta",
                                            withOptions: true, options: "Ok",
@@ -226,11 +236,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             }
         })
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToSecondController" {
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate!.window?.rootViewController = MainTabBarController()
-        }
+    func segueToMainViewController() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = MainTabBarController()
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "Main")
+        mainViewController.modalTransitionStyle = .crossDissolve
+        mainViewController.modalPresentationStyle = .fullScreen
+//        UIView.animate(withDuration: 0.25) {
+//            self.present(mainViewController, animated: true, completion: nil)
+//        }
+//        navigationController?.pushViewController(mainViewController, animated: true)
+        self.show(mainViewController, sender: nil)
     }
     func saveInKeychain() {
         DispatchQueue.main.async {
@@ -274,6 +291,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         SVProgressHUD.show()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (_, error) in
             if error == nil {
                 self.performLogInWithEmailAndPassword()
@@ -287,9 +305,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             }
         }
         SVProgressHUD.dismiss()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
-        self.dismiss(animated: true, completion: nil)
+        print("Llegué hasta acá")
     }
     @IBAction func contactButton(_ sender: DesignableButton) {
         guard let number = URL(string: Constants.URL.PhoneURL) else {return}

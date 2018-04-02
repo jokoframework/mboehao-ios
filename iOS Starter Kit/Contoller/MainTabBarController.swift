@@ -17,10 +17,14 @@ class MainTabBarController: UITabBarController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "Main")
         mainViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: Constants.UI.MainItem)
-        let mapViewController = MapViewController()
+        let mapsStoryboard = UIStoryboard(name: "Maps", bundle: Bundle.main)
+        let mapViewController = mapsStoryboard.instantiateViewController(withIdentifier: "Map")
         mapViewController.tabBarItem = UITabBarItem(title: "Maps",
                                                     image: UIImage(named: "map"),
                                                     tag: Constants.UI.MapItem)
-        self.viewControllers = [mainViewController, mapViewController]
+        let settingsStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let settingsViewController = settingsStoryboard.instantiateViewController(withIdentifier: "Preferences")
+        settingsViewController.tabBarItem = UITabBarItem(title: "Configuración", image: UIImage(named: "settings"), tag: 2)
+        self.viewControllers = [mainViewController, mapViewController, settingsViewController]
     }
 }
