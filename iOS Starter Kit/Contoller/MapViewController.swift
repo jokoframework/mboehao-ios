@@ -42,8 +42,7 @@ class MapViewController: UIViewController {
         }
     }
     func loadCoordinates() {
-        mapView?.isMyLocationEnabled = true
-        mapView?.settings.myLocationButton = true
+
         let markers: JSON = [
             ["latitude": -25.347673, "longitude": -57.430284, "icon": "atm"],
             ["latitude": -25.343640, "longitude": -57.504099, "icon": "dog"],
@@ -134,5 +133,13 @@ extension MapViewController: CLLocationManagerDelegate, GMSMapViewDelegate {
             return
         }
         locationManager.stopUpdatingLocation()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        mapView?.isMyLocationEnabled = false
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        locationManager.startUpdatingLocation()
+        mapView?.isMyLocationEnabled = true
     }
 }
