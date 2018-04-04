@@ -308,9 +308,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
-        print("Llegué hasta acá")
+        //
     }
-    @IBAction func contactButton(_ sender: DesignableButton) {
+    @IBAction func contactButton(_ sender: UIButton) {
         guard let number = URL(string: Constants.URL.PhoneURL) else {return}
         if UIApplication.shared.canOpenURL(number) {
             UIApplication.shared.open(number, options: [:], completionHandler: nil)
